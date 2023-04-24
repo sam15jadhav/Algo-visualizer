@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Search Tree- Algo Visualizer</title>
+
+      <!--font awesome cdn link-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+      <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+
+    <!--header-->
+    <header>
+
+      <a href="#" id="menu-btn"><i class="fas fa-bars"></i></a>
+
+      <div class="logo">
+          <span>Algo<i class="fas fa-laptop"></i>Visualizer</span>
+      </div>
+
+      <nav class="navbar">
+          <a href="#visual">Visualization</a>
+          <a href="#codes">Codes</a>
+          <a href="#blog">Blogs</a>
+      </nav>
+
+  </header>
+
+  <!-- bst Visualization -->
+    <div class="container">
+        <div class="row">
+          <div id="OperationContainer">
+            <input type="text" id="InsertNodeField" placeholder="Enter the number"/>
+            <button type="button" id="InsertButton" class="btn-primary">Insert</button>
+            <input type="text" id="DeleteNodeField" placeholder="Enter the number"/>
+            <button type="button" id="DeleteButton" class="btn-danger">Delete</button>
+            </div>
+          <div class="indicator_container">
+            <div class="indicator">
+              <div class="indicator_block" id="edge"></div>
+              <div class="text"><p>Edge</p></div>
+            </div>
+            <div class="indicator">
+              <div class="indicator_block" id="node"></div>
+              <div class="text"><p>Node</p></div>
+             </div>
+          </div>
+        </div>
+
+      <div class="Canvas">
+      </div>
+    </div>
+
+  <!-- resources section -->
+  <section class="resource" id="resource">
+    <div class="heading">
+        Binary Search Tree
+    </div>
+
+    <div class="content">
+        <p>Binary Search Tree is a node-based binary tree data structure which has the following properties:
+          <ul>
+            <li>The left subtree of a node contains only nodes with keys lesser than the node’s key.</li>
+            <li>The right subtree of a node contains only nodes with keys greater than the node’s key.</li>
+            <li>The left and right subtree each must also be a binary search tree.</li>
+          </ul>
+        </p>
+
+        <h4>Characteristics of Binary Search Tree:</h4>
+        <ul>
+            <li>
+                <strong>Ordering property: </strong>
+                Every node in a binary search tree has a value, and the values in the left subtree are less than the value of the node, while the values in the right subtree are greater than the value of the node.
+            </li>
+
+            <li>
+                <strong>Recursive Structure:</strong>
+                A binary search tree is a recursive data structure because each subtree of a binary search tree is also a binary search tree.
+            </li>
+
+            <li>
+                <strong>Traversal Order:</strong>
+                The in-order traversal of a binary search tree gives the keys in sorted order.
+            </li>
+        </ul>
+
+        <h4>Advantages of Binary Search Tree:</h4>
+        <ul>
+            <li>
+                <strong>Fast Search: </strong>
+                Binary search trees provide efficient search operations with an average time complexity of O(log n) for a tree with n nodes. This makes them ideal for applications that require fast searching.
+            </li>
+
+            <li>
+                <strong>Sorting: </strong>
+                Binary search trees can be used to sort a list of items in O(n log n) time, which is faster than many other sorting algorithms.
+            </li>
+
+            <li>
+                <strong>Dynamic Resizing: </strong>
+                Binary search trees can be easily resized by inserting or deleting nodes, which makes them suitable for applications that require dynamic resizing.
+            </li>
+
+            <li>
+                <strong>Efficient Memory Usage: </strong>
+                Binary search trees use memory efficiently by only storing the data required for each node, which makes them ideal for applications with limited memory.
+            </li>
+        </ul>
+
+        <div class="illustration">
+            <h4>Snapshot of Binary Search Tree: </h4>
+          
+            <img src="../../images/bst-final.PNG" alt="">
+        </div>
+    </div>
+</section>
+
+  <!-- codes section  -->
+  <!-- <section class="codes" id="codes">
+    <div class="heading">
+        <span>Implementation of Binary Search Tree: </span>
+    </div>
+
+    <div class="container">
+        <div class="tabs">
+          <h3 class="active">C</h3>
+          <h3>C++</h3>
+          <h3>Java</h3>
+          <h3>Python</h3>
+        </div>
+        <div class="tab-content">
+          <div class="active">
+            <h4>Binary Search in C</h4>
+            <p>
+                <span>// C program to implement recursive Binary Search</span> <br>
+                    #include < stdio.h > <br>
+                    <br>
+                    <span>// A recursive binary search function. It returns location of x in given array arr[l..r] is present, otherwise -1</span> <br>
+                    <strong style="color:gray">int</strong> binarySearch(int arr[], <strong style="color:gray">int</strong> l, <strong style="color:rgb(250, 138, 156)">int</strong> r, <strong style="color:rgb(250, 138, 156)">int</strong> x) <br>
+                    &nbsp;&nbsp;{ <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;    <strong>if</strong> (r >= l) { <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      <strong style="color:gray">int</strong> mid = l + (r - l) / 2; <br>
+
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <span>// If the element is present at the middle itself</span> <br>
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <strong>if</strong> (arr[mid] == x) <br>
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;    <strong>return</strong> mid; <br>
+                            <br>
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <span>// If element is smaller than mid, then it can only be present in left subarray</span> <br>
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <strong>if</strong> (arr[mid] > x) <br>
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <strong>return</strong> binarySearch(arr, l, mid - 1, x); <br>
+                            <br>
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <span>// Else the element can only be present in right subarray</span> <br>
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <strong>return</strong> binarySearch(arr, mid + 1, r, x); <br>
+                            &nbsp;&nbsp; &nbsp;&nbsp; } <br>
+
+                            &nbsp;&nbsp;&nbsp;&nbsp;  <span>// We reach here when element is not present in array</span> <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;  <strong>return</strong> -1; <br>
+                            &nbsp;&nbsp; } <br>
+                    <br>
+
+                    <strong style="color:gray">int</strong> main() <br>
+                    { <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp; <strong style="color:gray">int</strong> arr[] = { 2, 3, 4, 10, 40 }; <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp; <strong style="color:gray">int</strong> n = <strong>sizeof</strong>(arr) / <strong>sizeof</strong>(arr[0]); <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp; <strong style="color:gray">int</strong> x = 10; <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp; <strong style="color:gray">int</strong> result = binarySearch(arr, 0, n - 1, x); <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp; (result == -1) <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;     ? <strong style="color:rgb(250, 138, 156)">printf</strong>("Element is not present in array") <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;     : <strong style="color:rgb(250, 138, 156)">printf</strong>("Element is present at index %d", result); <br>
+                            &nbsp;&nbsp; &nbsp;&nbsp;     <strong>return</strong> 0; <br>
+                    } <br>
+                    <br>
+            </p>
+          </div>
+
+          <div>
+            <h4>Binary Search in CPP</h4>
+            <p>
+                <span>// C++ program to implement recursive Binary Search</span> <br>
+                    #include < iostream > <br>
+                    <strong>using namespace </strong>std; <br>
+                    <br>
+                    <span>// A recursive binary search function. It returns location of x in given array arr[l..r] is present, otherwise -1</span> <br>
+                    <strong style="color:gray">int</strong> binarySearch(int arr[], <strong style="color:gray">int</strong> l, <strong style="color:rgb(250, 138, 156)">int</strong> r, <strong style="color:rgb(250, 138, 156)">int</strong> x) <br>
+                    &nbsp;&nbsp;{ <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;    <strong>if</strong> (r >= l) { <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      <strong style="color:gray">int</strong> mid = l + (r - l) / 2; <br>
+
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <span>// If the element is present at the middle itself</span> <br>
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <strong>if</strong> (arr[mid] == x) <br>
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;    <strong>return</strong> mid; <br>
+                            <br>
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <span>// If element is smaller than mid, then it can only be present in left subarray</span> <br>
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <strong>if</strong> (arr[mid] > x) <br>
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <strong>return</strong> binarySearch(arr, l, mid - 1, x); <br>
+                            <br>
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <span>// Else the element can only be present in right subarray</span> <br>
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <strong>return</strong> binarySearch(arr, mid + 1, r, x); <br>
+                            &nbsp;&nbsp; &nbsp;&nbsp; } <br>
+
+                            &nbsp;&nbsp;&nbsp;&nbsp;  <span>// We reach here when element is not present in array</span> <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;  <strong>return</strong> -1; <br>
+                            &nbsp;&nbsp; } <br>
+                    <br>
+
+                    <strong style="color:gray">int</strong> main() <br>
+                    { <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp; <strong style="color:gray">int</strong> arr[] = { 2, 3, 4, 10, 40 }; <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp; <strong style="color:gray">int</strong> n = <strong>sizeof</strong>(arr) / <strong>sizeof</strong>(arr[0]); <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp; <strong style="color:gray">int</strong> x = 10; <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp; <strong style="color:gray">int</strong> result = binarySearch(arr, 0, n - 1, x); <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp; (result == -1) <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;     ? <strong style="color:rgb(250, 138, 156)">cout<<</strong>"Element is not present in array" <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;     : <strong style="color:rgb(250, 138, 156)">cout<<</strong>"Element is present at index %d"<< result; <br>
+                            &nbsp;&nbsp; &nbsp;&nbsp;     <strong>return</strong> 0; <br>
+                    } <br>
+                    <br>
+            </p>
+          </div>
+
+          <div>
+            <h4>Binary Search in Java</h4>
+            <p>
+                <span>// Java implementation of recursive Binary Search</span> <br>
+                <strong>class</strong> BinarySearch { <br>
+
+                    &nbsp;&nbsp;<span>// Returns index of x if it is present in arr[l... r], else return -1</span> <br>
+                    &nbsp;&nbsp;<strong>int</strong> binarySearch(int arr[], int l, int r, int x) <br>
+                    &nbsp;&nbsp;{<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if (r >= l) {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;    int mid = l + (r - l) / 2;<br>
+
+                            &nbsp;&nbsp;&nbsp;&nbsp; <span>// If the element is present at the middle itself</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; if (arr[mid] == x)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <strong>return</strong> mid;<br>
+
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span>// If element is smaller than mid, then it can only be present in left subarray</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;if (arr[mid] > x)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>return</strong> binarySearch(arr, l, mid - 1, x);<br>
+
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span>// Else the element can only be present in right subarray</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<strong>return</strong> binarySearch(arr, mid + 1, r, x);<br>
+                            &nbsp;&nbsp;}<br>
+
+                            &nbsp;&nbsp;<span>// We reach here when element is not present in array</span><br>
+                            &nbsp;&nbsp;<strong>return</strong> -1;<br>
+                    }<br>
+                    <br>
+                    &nbsp;&nbsp;<span>// Driver method to test above</span><br>
+                    &nbsp;&nbsp;<strong>public static void</strong> main(String args[])<br>
+                    &nbsp;&nbsp;{<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;    BinarySearch ob = <strong style="color:rgb(250, 138, 156)">new</strong> BinarySearch();<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;   int arr[] = { 2, 3, 4, 10, 40 };<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;  int n = arr.length;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;    int x = 10;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;    int result = ob.binarySearch(arr, 0, n - 1, x);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;    if (result == -1)<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <strong style="color:rgb(250, 138, 156)">System.out.println</strong>("Element is not present in array");<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;    else<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <strong style="color:rgb(250, 138, 156)">System.out.println</strong>("Element is present at index " + result);<br>
+                        &nbsp;&nbsp;}<br>
+                 }<br>
+            </p>
+          </div>
+
+          <div>
+            <h4>Binary Search in Python</h4>
+            <p>
+                <strong>def</strong> binarySearch(arr, l, r, x): <br>
+                <br> 
+                    <span># Check base case</span> <br>
+                    &nbsp;&nbsp;<strong>if</strong> r >= l: <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;mid = l + (r - l) // 2 <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    <span># If element is present at the middle itself</span> <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    <strong>if</strong> arr[mid] == x: <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        return mid <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;   <span> # If element is smaller than mid, then it can only be present in left subarray</span> <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;   <strong>elif</strong> arr[mid] > x: <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        return binarySearch(arr, l, mid-1, x) <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;   <span> # Else the element can only be present in right subarray</span> <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;   <strong>else:</strong> <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;       return binarySearch(arr, mid + 1, r, x) <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>else:</strong> <br>
+                    &nbsp;&nbsp;    <span># Element is not present in the array</span> <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;   return -1 <br>
+                <br>
+                <span># Driver Code</span> <br>
+                <strong>if</strong> __name__ == <strong>'__main__':</strong> <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;    arr = [2, 3, 4, 10, 40]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;    x = 10<br>
+                    
+                &nbsp;&nbsp;&nbsp;&nbsp;    <span># Function call</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;    result = binarySearch(arr, 0, len(arr)-1, x)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;    <strong>if</strong> result != -1:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        <strong style="color:rgb(250, 138, 156)">print</strong>("Element is present at index % d" % result)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;        <strong>else:</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        <strong style="color:rgb(250, 138, 156)">print</strong>("Element is not present in array")<br>
+            </p>
+          </div>
+        </div>
+      </div>
+</section> -->
+
+<!-- blogs section -->
+<section class="blog" id="blog">
+    <div class="heading">
+        <span>Related Blogs On Binary Search Tree: </span>
+    </div>
+
+    <div class="blogs">
+        <div class="blog-item">
+            <img src="../../images/coding-binary.PNG" alt="">
+            <div class="blog-content">
+                <h3>
+                    <a target="_blank" href="https://www.codingninjas.com/blog/2021/09/08/understanding-binary-search/">
+                        Understanding Binary Search Algorithm
+                    </a>
+                </h3>
+            </div>
+        </div>
+
+        <div class="blog-item">
+            <img src="../../images/knowledge-binary.PNG" alt="">
+            <div class="blog-content">
+                <h3>
+                    <a target="_blank" href="https://www.knowledgehut.com/blog/programming/binary-search-algorithm">
+                        Binary Search Algorithm with Example Code
+                    </a>
+                </h3>
+            </div>
+        </div>
+
+        <div class="blog-item">
+            <img src="../../images/upgrad-binary.PNG" alt="">
+            <div class="blog-content">
+                <h3>
+                    <a target="_blank" href="https://www.upgrad.com/blog/everything-you-need-to-know-about-binary-search-tutorial-and-algorithm/">
+                        Everything You Need to Know About Binary Search Tutorial and Algorithm
+                    </a>
+                </h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- D3.JS -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.5.0/d3.min.js"
+      integrity="sha512-0XfwGD1nxplHpehcSVI7lY+m/5L37PNHDt+DOc7aLFckwPXjnjeA1oeNbru7YeI4VLs9i+ADnnHEhP69C9CqTA=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./script.js"></script>
+    <script src="../../js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,572 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+
+:root{
+    --main-color:#443;
+    --border-radius:95% 4% 97% 5%/4% 94% 3% 95%;
+    --border-radius-hover:4% 95% 6% 95%/95% 4% 92% 5%;
+    --border:.2rem solid rgb(42, 126, 165);
+    --border-hover:.2rem dashed rgb(42,126,165);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    transition: all .2s linear;
+    text-transform: capitalize;
+}
+
+html{
+    font-size:62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 6rem;
+    scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar{
+    width: 1rem;
+    height: .5rem;
+}
+
+html::-webkit-scrollbar-thumb{
+    background: #666;
+}
+
+html::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+.btn{
+    display: inline-block;
+    padding: .9rem 1.5rem;
+    border-radius: var(--border-radius);
+    color: var(--main-color);
+    border: var(--border);
+    cursor: pointer;
+    margin-top: 1rem;
+    font-size: 1.7rem;
+}
+
+.lg-btn{
+    background: rgb(42, 126, 165);
+    color: white;
+}
+
+.btn:hover{
+    border: var(--border-hover);
+    border-radius: var(--border-radius-hover);
+}
+
+#menu-btn{
+    font-size: 3rem;
+    color: var(--main-color);
+    cursor: pointer;
+    display: none;
+}
+
+header{
+    display: flex;
+    height: 7vh;
+    align-items: center;
+    justify-content: space-between;
+    padding:.2rem 9%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: #ffff;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+}
+
+header .logo{
+    font-size: 3rem;
+    font-weight: bolder;
+    color:var(--main-color);
+}
+
+header .logo i{
+    font-size: 2.5rem;
+    color: rgb(42, 126, 165);
+    padding: .5rem;
+}
+
+header .navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
+}
+
+header .navbar a{
+        font-size: 1.8rem;
+        color: var(--main-color);
+        margin: 0 1rem;
+        text-decoration: none;
+        text-transform: capitalize;
+}
+
+header .btn{
+    margin-top: 0;
+}
+
+section{
+    padding: 2rem 9%;
+}
+
+.heading{
+    font-size: 6rem;
+    text-transform: uppercase;
+    color: rgb(42, 126, 165);
+    -webkit-text-stroke: .05rem var(--main-color);
+    letter-spacing: .2rem;
+    text-align: center;
+    pointer-events: none;
+    position: relative;
+    margin: -1.5rem 0;
+}
+
+/*home section styling*/
+.home{
+    /* padding-top: 12rem; */
+    min-height: 100vh;
+    background: rgba(42, 126, 165,.2);
+    background-position: center;
+    background-size: cover;
+}
+
+.home .row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.home .row .content{
+    flex: 1 1 42rem;
+}
+
+.home .row .content h3{
+    font-size: 4.5rem;
+    color: black;
+    text-transform: uppercase;
+    margin: 2rem 0;
+}
+
+.home .row .content h3 span{
+    color: rgb(42, 126, 165);
+    text-transform: uppercase;
+}
+
+.home .row .content p{
+    font-size: 1.6rem;
+    margin: 2rem 0;
+}
+
+.home .row .img{
+    flex: 1 1 42rem;
+    /* padding-top: 10rem; */
+    text-align: center;
+}
+
+.home .row .img img{
+    height: 100vh;
+    width: 125%;
+    /* animation: float 4s linear infinite; */
+}
+
+@keyframes float{
+    0%, 100%{
+        transform: translateY(0rem);
+    }
+    50%{
+        transform: translateY(-7rem);
+    }
+}
+
+.home .image-slider{
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.home .image-slider img{
+    height: 9rem;
+    margin: 0 .5rem;
+    cursor: pointer;
+    margin-top: 10rem;
+}
+
+.home .image-slider img:hover{
+    transform: translateY(-2rem);
+}
+
+/*features styling*/
+.features .heading span{
+    font-size: 3rem;
+    -webkit-text-stroke: .07rem black;
+    color: transparent;
+    margin: -1.5rem 0;
+}
+
+.features .row{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.features .row .image{
+    flex: 1 1 42rem;
+}
+
+.features .row .image img{
+    height: 45rem;
+    width: 90%;
+    animation: aImage 4s linear infinite;
+}
+
+@keyframes aImage {
+    0%,100%{
+        transform: scale(.9);
+    }
+    50%{
+        transform: scale(.8);
+    }
+    
+}
+
+.features .row .content{
+    flex: 1 1 42rem;
+}
+
+.features .row .content .icons-container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 3rem;
+}
+
+.features .row .content .icons-container .icons{
+    flex: 1 1 15rem;
+    padding: 1.5rem;
+    text-align: center;
+    border: var(--border);
+    border-radius: var(--border-radius);
+}
+
+.features .row .content .icons-container .icons p{
+    font-size: 14px;
+    color: gray;
+}
+
+.features .row .content .icons-container .icons h3{
+    font-size: 1.7rem;
+    padding-top: 1rem;
+    color: var(--main-color);
+}
+
+/* language styling */
+.language .heading span{
+    font-size: 3rem;
+    -webkit-text-stroke: .07rem black;
+    color: transparent;
+    margin: -1.5rem 0;
+}
+
+.language .container{
+    display: flex;
+    width: 80%;
+    margin: 2rem auto;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+.language .container .img{
+    display: block;
+    gap: 1rem;
+    text-align: center;
+    font-size: 20px;
+}
+
+.language .container .img img{
+    height: 140px;
+    width: 140px;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+}
+
+/* faqs styling */
+.faq{
+
+}
+
+.faq .heading span{
+    font-size: 3rem;
+    -webkit-text-stroke: .07rem black;
+    color: transparent;
+    margin: -1.5rem 0;
+}
+
+.faq-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    }
+
+    .hr-line{
+      width: 60%;
+      margin: auto;
+      
+    }
+    /* Style the buttons that are used to open and close the faq-page body */
+    .faq-page {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 30px 20px;
+        width: 60%;
+        border: none;
+        outline: none;
+        transition: 0.4s;
+        margin: .2rem auto;
+        font-size: 2rem;
+    }
+    .faq-body{
+       margin: auto;
+       width: 60%; 
+       padding:2rem;
+       font-size: 1.6rem;
+       
+    }
+    /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+    .active,
+    .faq-page:hover {
+        background-color: #F9F9F9;
+    }
+    /* Style the faq-page panel. Note: hidden by default */
+    .faq-body {
+        padding: 0 18px;
+        background-color: white;
+        display: none;
+        overflow: hidden;
+    }
+    .faq-page:after {
+        content: '\02795';
+        /* Unicode character for "plus" sign (+) */
+        font-size: 13px;
+        color: #777;
+        float: right;
+        margin-left: 5px;
+    }
+    .active:after {
+        content: "\2796";
+        /* Unicode character for "minus" sign (-) */
+    }
+
+/* Banner styling */
+.banner{
+    margin: 2rem auto;
+}
+
+.banner .container{
+    width: 100%;
+    background: url('../images/banner-bg.jpg') no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 5rem;
+    text-align: center;
+    border-radius: 5%;
+    /* border: 2px solid rgb(42, 126, 165); */
+}
+
+.banner .container h3{
+    font-size: 3rem;
+    color: black;
+    font-weight: bold;
+}
+
+.banner .container .btns{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin: 2rem auto;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.banner .container .btns p{
+    background: white;
+    font-size: 16px;
+    color: black;
+    padding: 1rem;
+    box-shadow:0 .5rem 1rem rgba(0,0,0,.2);
+}
+
+/*footer styling*/
+
+.footer{
+    background: rgba(220, 220, 220,.3);
+}
+.footer .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
+    gap:1.5rem;
+}
+
+.footer .box-container .box h3{
+    font-size: 2.5rem;
+    padding:1rem 0;
+    color:var(--main-color);
+}
+
+.footer .box-container .box a{
+    display: block;
+    font-size: 1.5rem;
+    padding:1rem 0;
+    color:var(--main-color);
+}
+
+.footer .box-container .box a i{
+    padding-right: .5rem;
+}
+
+.footer .box-container .box a:hover i{
+    padding-right: 2rem;
+    color: rgb(0, 111, 163);
+}
+
+.footer .credit{
+    text-align: center;
+    font-size: 2rem;
+    padding:2rem 1rem;
+    margin-top: 1rem;
+    color:var(--main-color);
+}
+
+.footer .credit span{
+    border-bottom: var(--border-hover);
+}
+
+
+/*media queries*/
+@media(max-width:991px) {
+    html{
+        font-size: 55%;
+    }
+
+    header{
+        padding:0 2rem;
+    }
+
+    section{
+        padding: 2rem;
+    }
+}
+
+@media(max-width:768px) {
+    #menu-btn{
+        display: initial;
+    }
+
+    #menu-btn.fa-times{
+        transform: rotate(180deg);
+    }
+
+    header .navbar{
+        position: absolute;
+        top: 99%;
+        left: 0; right: 0;
+        background: #fff;
+        display: block;
+        width: 100%;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+    header .navbar.active{
+        clip-path:polygon(0 0, 100% 0, 100% 100%, 0 100%) ;
+    }
+
+    header .navbar a{
+        display: block;
+        padding: 1.5rem 2rem;
+        margin: 0;
+        font-size: 2.1rem;
+    }
+
+    .home{
+        text-align: center;
+        height:fit-content;
+    }
+
+    .home .row .content h3{
+        font-size: 4rem;
+    }
+
+    .home .row .img img:hover{
+        transform: translateY(-4rem);
+    }
+
+    .home .row .img img{
+        height: 27rem !important;
+        width: 23rem !important;
+    }
+
+    .home .image-slider img{
+        margin-top: 7rem;
+    }
+
+    .heading{
+        font-size: 4rem;
+    }
+
+    .heading span{
+        font-size: 2.5rem;
+    }
+
+    .menu .box-container .box{
+        margin-left: 1.5rem;
+    }
+
+    .menu .box-container .box img{
+        margin-left: -5rem;
+    }
+}
+
+@media(max-width:450px) {
+    html{
+        font-size: 50%;
+    }
+
+    .home{
+        margin-top: 50px;
+    }
+
+    .home .row .img img{
+        height:auto;
+        width: 90vw !important;
+    }
+
+    header .lg-btn{
+        visibility: hidden;
+    }
+
+    .banner .container{
+        padding: 2rem;
+    }
+
+    .banner .container .btns p{
+        padding: .5rem;
+        font-size: 15px;
+    }
+
+    .banner{
+        margin: 0 !important;
+        width: 80%;
+    }
+    
+}

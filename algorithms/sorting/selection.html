@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selection Sort-Algo Visualizer</title>
+
+    <!--font awesome cdn link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!--custom style file link-->
+    <link rel="stylesheet" href="../../css/linear.css">
+</head>
+<body>
+
+    <!--header-->
+    <header>
+
+        <a href="#" id="menu-btn"><i class="fas fa-bars"></i></a>
+
+        <div class="logo">
+            <span>Algo<i class="fas fa-laptop"></i>Visualizer</span>
+        </div>
+
+        <nav class="navbar">
+            <a href="#visual">Visualization</a>
+            <a href="#resource">Resource</a>
+            <a href="#codes">Codes</a>
+            <a href="#blog">Blogs</a>
+        </nav>
+
+    </header>
+
+    <!-- Visualizationsection -->
+    <section class="visual" id="visual">
+            <div class="heading">
+                <span>Selection Sort Visualizer</span>
+              </div>
+          
+              <br />
+    
+              <div class="container">
+                <div class="form-inline">
+          
+                  <div class="form-group">
+                    <button class="btn btn-primary" id="sort">Sort</button>
+                  </div>
+                  <div class="form-group">
+                    <button class=" btn btn-danger" id="stop">Stop</button>
+                  </div>
+                </div>
+                <br/>
+                
+                <div class="row">
+                  <div>
+                    <button class="btn-info" id="random-data">
+                      Generate Random Data
+                    </button>
+                  </div>
+                  <div >
+                    <label>
+                      Speed:
+                      <input
+                        type="range"
+                        id="speed"
+                        name="speed"
+                        min="100"
+                        max="800"
+                        value="300"
+                        onchange="setSpeed()"
+                      />
+                    </label>
+                  </div>
+                </div>
+              </div>
+          
+              <div class="container">
+                <div class="bar-chart">
+                  <div id="chart"></div>
+                  <hr />
+                </div>
+              </div>
+            </div>
+    </section>
+
+    <!-- resources section -->
+    <section class="resource" id="resource">
+      <div class="heading">
+          <span>Sorting Algorithm > </span>
+          Selection Sort
+      </div>
+
+      <div class="content">
+          <p>Selection sort is a simple and efficient sorting algorithm that works by repeatedly selecting the smallest (or largest) element from the unsorted portion of the list and moving it to the sorted portion of the list. The algorithm repeatedly selects the smallest (or largest) element from the unsorted portion of the list and swaps it with the first element of the unsorted portion</p>
+          <h4>complexity analysis of Bubble sort</h4>
+          <ul>
+              <li>
+                  <strong>Time Complexity: </strong>
+                  The time complexity of Selection Sort is O(N2) as there are two nested loops:
+                  <ul>
+                    <li>One loop to select an element of Array one by one = O(N)</li>
+                    <li>Another loop to compare that element with every other Array element = O(N)</li>
+                  </ul>
+                  Therefore overall complexity = O(N) * O(N) = O(N*N) = O(N2)
+              </li>
+
+              <li>
+                  <strong>Space complexity: </strong>
+                  O(1) as the only extra memory used is for temporary variables while swapping two values in Array. The selection sort never makes more than O(N) swaps and can be useful when the memory write is a costly operation. 
+              </li>
+          </ul>
+          <br>
+
+          <div class="illustration">
+              <h4>Illustration of Bubble sort:</h4>
+              <br>
+              <span>The algorithm maintains two subarrays in a given array.</span>
+              <ul>
+                <li>The subarray which already sorted. </li>
+                <li>The remaining subarray was unsorted.</li>
+              </ul>
+              <span>In every iteration of the selection sort, the minimum element (considering ascending order) from the unsorted subarray is picked and moved to the beginning of the sorted subarray. </span>
+              <br>
+              <span>After every iteration sorted subarray size increase by one and the unsorted subarray size decrease by one.</span>
+              <br>
+
+              <span>Lets consider the following array as an example: arr[] = {64, 25, 12, 22, 11}</span>
+
+              <ul>
+                <li>
+                  <strong style="font-size: 17px;">First Pass: </strong>
+                  <ul>
+                    <li>For the first position in the sorted array, the whole array is traversed from index 0 to 4 sequentially. The first position where <strong>64 </strong> is stored presently, after traversing whole array it is clear that <strong>11</strong> is the lowest value.</li>
+                    <li>Thus, replace 64 with 11. After one iteration 11, which happens to be the least value in the array, tends to appear in the first position of the sorted list. </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <strong style="font-size: 17px;">Second Pass :</strong>
+                  <ul>
+                    <li>For the second position, where <strong>25</strong> is present, again traverse the rest of the array in a sequential manner.</li>
+                    <li>After traversing, we found that <strong>12</strong> is the second lowest value in the array and it should appear at the second place in the array, thus swap these values.  </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <strong style="font-size: 17px;">Third Pass:</strong>
+                  <ul>
+                    <li>Now, for third place, where <strong>25</strong> is present again traverse the rest of the array and find the third least value present in the array.</li>
+                    <li>While traversing,<strong> 22</strong> came out to be the third least value and it should appear at the third place in the array, thus swap 22 with element present at third position. </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <strong style="font-size: 17px;">Fourth Pass:</strong>
+                  <ul>
+                    <li>Similarly, for fourth position traverse the rest of the array and find the fourth least element in the array. </li>
+                    <li>As <strong>25</strong> is the 4th lowest value hence, it will place at the fourth position.</li>
+                  </ul>
+                </li>
+
+                <li>
+                  <strong>Fifth Pass:</strong>
+                  <ul>
+                    <li>At last the largest value present in the array automatically get placed at the last position in the array.</li>
+                    <li>The resulted array is the sorted array.</li>
+                  </ul>
+                </li>
+                <img src="../../images/selection-final.PNG" alt="">
+              </ul>
+
+              <br>
+              <a href="#visual">>>Try Visualization By Yourself</a>
+          </div>
+      </div>
+  </section>
+
+    <!-- codes section  -->
+    <section class="codes" id="codes">
+        <div class="heading">
+            <span>Implementation of Selection Sort Algorithm: </span>
+        </div>
+
+        <div class="container">
+            <div class="tabs">
+              <h3 class="active">C</h3>
+              <h3>C++</h3>
+              <h3>Java</h3>
+              <h3>Python</h3>
+            </div>
+            <div class="tab-content">
+              <div class="active">
+                <h4>Selection Sort in C</h4>
+                <p>
+                  <span>// C program for implementation of selection sort</span> <br>
+                      #include < stdio.h > <br>
+                      <br>
+                      <strong>void</strong> swap(int *xp, int *yp) <br>
+                      { <br>
+                      &nbsp;&nbsp;  int temp = *xp; <br>
+                      &nbsp;&nbsp;  *xp = *yp; <br>
+                      &nbsp;&nbsp;  *yp = temp; <br>
+                      } <br>
+                       <br>
+                      <strong>void</strong> selectionSort(int arr[], int n) <br>
+                      { <br>
+                        &nbsp;&nbsp;  int i, j, min_idx; <br>
+                      <br>
+                      &nbsp;&nbsp;  <span>// One by one move boundary of unsorted subarray</span> <br>
+                      &nbsp;&nbsp;  <strong>for</strong> (i = 0; i < n-1; i++) <br>
+                      &nbsp;&nbsp;  { <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;    <span>// Find the minimum element in unsorted array</span> <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;   min_idx = i; <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;   <strong>for</strong> (j = i+1; j < n; j++) <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <strong>if</strong> (arr[j] < arr[min_idx]) <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    min_idx = j; <br>
+                          <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;  <span>// Swap the found minimum element with the first element</span> <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;  <strong>if</strong>(min_idx != i) <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    swap(&arr[min_idx], &arr[i]); <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;} <br>
+                          &nbsp;&nbsp;} <br>
+                          <br>
+                      <span>/* Function to print an array */</span> <br>
+                      <strong>void</strong> printArray(int arr[], int size) <br>
+                      { <br>
+                        &nbsp;&nbsp;  int i; <br>
+                        &nbsp;&nbsp; <strong>for</strong> (i=0; i < size; i++) <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;  <strong style="color: rgb(250, 135, 154);">printf</strong>("%d ", arr[i]); <br>
+                        &nbsp;&nbsp; <strong style="color: rgb(250, 135, 154);">printf</strong>("\n"); <br>
+                      } <br>
+                        <br>
+                      <span>// Driver program to test above functions</span> <br>
+                      int main() <br>
+                      { <br>
+                        &nbsp;&nbsp;  int arr[] = {64, 25, 12, 22, 11}; <br>
+                        &nbsp;&nbsp;  int n = sizeof(arr)/sizeof(arr[0]); <br>
+                        &nbsp;&nbsp;  selectionSort(arr, n); <br>
+                        &nbsp;&nbsp;  <strong style="color: rgb(250, 135, 154);">printf</strong>("Sorted array: \n"); <br>
+                        &nbsp;&nbsp;  printArray(arr, n); <br>
+                        &nbsp;&nbsp;  <strong>return</strong> 0; <br>
+                      } <br>
+                </p>
+              </div>
+
+              <div>
+                <h4>Selection Sort in CPP</h4>
+                <p>
+                  <span>// C++ program for implementation of selection sort</span> <br>
+                      #include < iostream > <br>
+                      <strong>using namespace </strong>std; <br>
+                      <br>
+                      <strong>void</strong> swap(int *xp, int *yp) <br>
+                      { <br>
+                      &nbsp;&nbsp;  int temp = *xp; <br>
+                      &nbsp;&nbsp;  *xp = *yp; <br>
+                      &nbsp;&nbsp;  *yp = temp; <br>
+                      } <br>
+                       <br>
+                      <strong>void</strong> selectionSort(int arr[], int n) <br>
+                      { <br>
+                        &nbsp;&nbsp;  int i, j, min_idx; <br>
+                      <br>
+                      &nbsp;&nbsp;  <span>// One by one move boundary of unsorted subarray</span> <br>
+                      &nbsp;&nbsp;  <strong>for</strong> (i = 0; i < n-1; i++) <br>
+                      &nbsp;&nbsp;  { <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;    <span>// Find the minimum element in unsorted array</span> <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;   min_idx = i; <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;   <strong>for</strong> (j = i+1; j < n; j++) <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <strong>if</strong> (arr[j] < arr[min_idx]) <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    min_idx = j; <br>
+                          <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;  <span>// Swap the found minimum element with the first element</span> <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;  <strong>if</strong>(min_idx != i) <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    swap(&arr[min_idx], &arr[i]); <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;} <br>
+                          &nbsp;&nbsp;} <br>
+                          <br>
+                      <span>/* Function to print an array */</span> <br>
+                      <strong>void</strong> printArray(int arr[], int size) <br>
+                      { <br>
+                        &nbsp;&nbsp;  int i; <br>
+                        &nbsp;&nbsp; <strong>for</strong> (i=0; i < size; i++) <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;  <strong style="color: rgb(250, 135, 154);">cout<< </strong>arr[i] << " ";<br>
+                        &nbsp;&nbsp; <strong style="color: rgb(250, 135, 154);">cout<<</strong>endl; <br>
+                      } <br>
+                        <br>
+                      <span>// Driver program to test above functions</span> <br>
+                      int main() <br>
+                      { <br>
+                        &nbsp;&nbsp;  int arr[] = {64, 25, 12, 22, 11}; <br>
+                        &nbsp;&nbsp;  int n = sizeof(arr)/sizeof(arr[0]); <br>
+                        &nbsp;&nbsp;  selectionSort(arr, n); <br>
+                        &nbsp;&nbsp;  <strong style="color: rgb(250, 135, 154);">cout<<</strong> "Sorted array: \n"; <br>
+                        &nbsp;&nbsp;  printArray(arr, n); <br>
+                        &nbsp;&nbsp;  <strong>return</strong> 0; <br>
+                      } <br>
+                </p>
+              </div>
+              <div>
+                <h4>Selection sort in Java</h4>
+                <p>
+                  <span>// Java program for implementation of Selection Sort</span>  <br>
+                      <strong>import</strong> java.io.*; <br>
+                      <strong>public class</strong> SelectionSort <br>
+                      { <br>
+                      &nbsp;&nbsp;  <strong>void</strong> sort(int arr[]) <br>
+                      &nbsp;&nbsp;   { <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp;     int n = arr.length; <br>
+
+                        &nbsp;&nbsp; &nbsp;&nbsp;   <span>// One by one move boundary of unsorted subarray</span> <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp;  <strong> for </strong>(int i = 0; i < n-1; i++) <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp;   { <br>
+                          &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;     <span>// Find the minimum element in unsorted array</span> <br>
+                          &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;   int min_idx = i; <br>
+                          &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;   <strong>for</strong> (int j = i+1; j < n; j++) <br>
+                          &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;     <strong>if</strong> (arr[j] < arr[min_idx]) <br>
+                          &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;       min_idx = j; <br>
+                            <br>
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;   <span>// Swap the found minimum element with the first element</span> <br>
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;   int temp = arr[min_idx]; <br>
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;   arr[min_idx] = arr[i]; <br>
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;   arr[i] = temp; <br>
+                            &nbsp;&nbsp; &nbsp;&nbsp; } <br>
+                            &nbsp;&nbsp; } <br>
+                         <br>
+                         &nbsp;&nbsp; <span>// Prints the array</span> <br>
+                         &nbsp;&nbsp; <strong>void</strong> printArray(int arr[]) <br>
+                         &nbsp;&nbsp; { <br>
+                          &nbsp;&nbsp; &nbsp;&nbsp;   int n = arr.length; <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp;   <strong>for</strong> (int i=0; i< n; ++i) <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp;   <strong style="color: rgb(250, 135, 154);">System.out.print</strong>(arr[i]+" "); <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp;   <strong style="color: rgb(250, 135, 154);">System.out.println();</strong> <br>
+                        &nbsp;&nbsp; } <br>
+                         <br>
+                         &nbsp;&nbsp; <span>// Driver code to test above</span> <br>
+                         &nbsp;&nbsp; <strong>public static void</strong> main(String args[]) <br>
+                         &nbsp;&nbsp; { <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp;   SelectionSort ob = <strong style="color: rgb(250, 135, 154);">new</strong> SelectionSort(); <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp;   int arr[] = {64,25,12,22,11}; <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp;   ob.sort(arr); <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp;   <strong style="color: rgb(250, 135, 154);">System.out.println</strong>("Sorted array"); <br>
+                        &nbsp;&nbsp; &nbsp;&nbsp;   ob.printArray(arr); <br>
+                        &nbsp;&nbsp; } <br>
+                      } <br>
+                </p>
+              </div>
+              <div>
+                <h4>Selection Sort in Python</h4>
+                <p>
+                  <span># Python program for implementation of Selection Sort</span>  <br>
+                  <strong>import</strong> sys <br>
+                  A = [64, 25, 12, 22, 11] <br>
+                   <br>
+                  <span># Traverse through all array elements </span><br>
+                 <strong> for</strong> i in range(len(A)): <br>
+                  &nbsp;&nbsp;  <span># Find the minimum element in remaining unsorted array</span> <br>
+                  &nbsp;&nbsp;  min_idx = i <br>
+                  &nbsp;&nbsp;  <strong> for</strong> j in range(i+1, len(A)): <br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;    <strong>if </strong> A[min_idx] > A[j]: <br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      min_idx = j <br>
+                         <br>
+                         &nbsp;&nbsp;  <span># Swap the found minimum element with the first element</span>	<br>
+                         &nbsp;&nbsp;  A[i], A[min_idx] = A[min_idx], A[i] <br>
+                   <br>
+                  <span># Driver code to test above </span><br>
+                  &nbsp;&nbsp;print ("Sorted array") <br>
+                  &nbsp;&nbsp;<strong>for</strong> i in range(len(A)): <br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;<strong style="color: rgb(250, 135, 154);">print</strong>("%d" %A[i],end=" , ") <br>
+                  </p>
+              </div>
+            </div>
+          </div>
+    </section>
+
+    <!-- blogs section -->
+    <section class="blog" id="blog">
+        <div class="heading">
+            <span>Related Blogs On Selection Sort Algorithm: </span>
+        </div>
+
+        <div class="blogs">
+            <div class="blog-item">
+                <img src="../../images/selection-coding.PNG" alt="">
+                <div class="blog-content">
+                    <h3>
+                        <a target="_blank" href="https://prepinsta.com/java-program/selection-sort/">
+                            Selection Sort in Java:Implementation, algorithm and program
+                        </a>
+                    </h3>
+                </div>
+            </div>
+
+            <div class="blog-item">
+                <img src="../../images/selection-prepinsta.PNG" alt="">
+                <div class="blog-content">
+                    <h3>
+                        <a target="_blank" href="https://www.codingninjas.com/codestudio/library/what-is-selection-sort">
+                            What is Selection Sort Algorithm?  Overview, & More
+                        </a>
+                    </h3>
+                </div>
+            </div>
+
+            <div class="blog-item">
+                <img src="../../images/selection-simpli.PNG" alt="">
+                <div class="blog-content">
+                    <h3>
+                        <a target="_blank" href="https://www.simplilearn.com/tutorials/data-structure-tutorial/selection-sort-algorithm">
+                            Selection Sort Algorithm In Data Structures
+                        </a>
+                    </h3>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/sort-base.js"></script>
+    <script src="../../js/selection-sort.js"></script>
+</body>
+</html>
+

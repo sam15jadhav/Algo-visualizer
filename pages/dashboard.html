@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard-Algo Visuzaliser</title>
+
+      <!--font awesome cdn link-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+    <!--header-->
+    <header>
+
+        <a href="#" id="menu-btn"><i class="fas fa-bars"></i></a>
+
+        <div class="logo">
+            <span>Algo<i class="fas fa-laptop"></i>Visualizer</span>
+        </div>
+
+        <nav class="navbar">
+            <a href="#" onclick="logout()">Logout</a>
+        </nav>
+
+    </header>
+
+    <!-- dashobard section  -->
+    <section class="dashboard">
+        <div class="row1-container">
+            <div class="box box-down cyan">
+              <h2>Searching Algorithms</h2>
+              <p> Searching Algorithms are designed to check for an element or retrieve an element from any data structure where it is stored</p>
+              <ul class="links">
+                <li>
+                    <a href="../algorithms/searching/linear.html">Linear Search</a>
+                </li>
+                <li>
+                    <a href="../algorithms/searching/binary.html">Binary Search</a>
+                </li>
+              </ul>
+              <img src="../images/dashboard-searching.svg" alt="">
+            </div>
+        
+            <div class="box red">
+              <h2>Sorting Algorithms</h2>
+              <p>Sorting is the process of placing or ordering elements from collection in some kind of asceding or descending.</p>
+              <ul class="links">
+                <li>
+                    <a href="../algorithms/sorting/buble.html">Bubble Sort</a>
+                </li>
+                <li>
+                    <a href="../algorithms/sorting/selection.html">Selection Sort</a>
+                </li>
+                <li>
+                    <a href="../algorithms/sorting/merge.html">Merge Sort</a>
+                </li>
+              </ul>
+              <img src="../images/dashboard-sorting.svg" alt="">
+            </div>
+        
+            <div class="box box-down blue">
+              <h2>Binary Tree</h2>
+              <p>Binary tree arranges the elements in order that left node must be smaller than parent node and the right node must be greater than the parent node.</p>
+              <ul class="links">
+                <li>
+                    <a href="../algorithms/bst/index.html">Binary Search Tree</a>
+                </li>
+              </ul>
+              <img src="../images/dashboard-dsa.svg" alt="">
+            </div>
+          </div>
+          <div class="row2-container">
+            <div class="box orange">
+              <h2>Problem Solving</h2>
+              <p>Regularly evaluates our talent to ensure quality</p>
+              <ul class="links">
+                <li>
+                    <a href="./problems.html">Problems</a>
+                </li>
+              </ul>
+              <img src="../images/dahboard-problem.svg" alt="">
+            </div>
+          </div>
+    </section>
+
+    <script>
+      // signup function
+          const logout=()=>{
+             window.location.replace("../index.html");
+          }
+    </script>
+</body>
+</html>

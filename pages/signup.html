@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup-Algo Visualizer</title>
+
+    <link rel="stylesheet" href="../css/signup.css">
+
+    <!-- firebase cdn -->
+    <script src="https://www.gstatic.com/firebasejs/9.20.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.20.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+
+    <div class="main">
+      <div id="result-box">
+        <h4 id="result">welcome</h3>
+      </div>
+
+      <form method="get" action="javascript: void(0);" id="login-form" class="login-form" autocomplete="off" role="main">
+        <h1 class="a11y-hidden">Registration Form</h1>
+        <div>
+            <label class="label-username">
+              <input type="text" class="text" name="username" placeholder="Username" id="username" required />
+              <span class="required">Username</span>
+            </label>
+          </div>
+        <div>
+          <label class="label-email">
+            <input type="email" class="text" name="email" placeholder="Email" id="email" tabindex="1" required />
+            <span class="required">Email</span>
+          </label>
+        </div>
+        <input type="checkbox" name="show-password" class="show-password a11y-hidden" id="show-password" tabindex="3" />
+        <label class="label-show-password" for="show-password">
+          <span>Show Password</span>
+        </label>
+        <div>
+          <label class="label-password">
+            <input type="text" class="text" name="password" placeholder="Password" id="password" tabindex="2" required />
+            <span class="required">Password</span>
+          </label>
+        </div>
+        <input type="submit" value="Register" id="submit-btn" onclick="signUp()" />
+        <div class="email">
+          <a href="./login.html">Already have an account?<span>Login</span></a>
+        </div>
+        <figure aria-hidden="true">
+          <div class="person-body"></div>
+          <div class="neck skin"></div>
+          <div class="head skin">
+            <div class="eyes"></div>
+            <div class="mouth"></div>
+          </div>
+          <div class="hair"></div>
+          <div class="ears"></div>
+          <div class="shirt-1"></div>
+          <div class="shirt-2"></div>
+        </figure>
+      </form>
+    </div>
+
+      <script src="../js/signup.js"></script>
+</body>
+</html>

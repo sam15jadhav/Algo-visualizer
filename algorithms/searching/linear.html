@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Search-Algo Visualizer</title>
+
+    <!--font awesome cdn link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!--custom style file link-->
+    <link rel="stylesheet" href="../../css/linear.css">
+</head>
+<body>
+
+    <!--header-->
+    <header>
+
+        <a href="#" id="menu-btn"><i class="fas fa-bars"></i></a>
+
+        <div class="logo">
+            <span>Algo<i class="fas fa-laptop"></i>Visualizer</span>
+        </div>
+
+        <nav class="navbar">
+            <a href="#visual">Visualization</a>
+            <a href="#resource">Resource</a>
+            <a href="#codes">Codes</a>
+            <a href="#blog">Blogs</a>
+        </nav>
+
+        <!-- <a href="#book" class="btn lg-btn">Login</a> -->
+    </header>
+
+
+    <!-- Visualizationsection -->
+    <section class="visual" id="visual">
+            <div class="heading">
+                <span>Linear Search Visualizer</span>
+              </div>
+          
+              <br />
+              <div class="container">
+                <div class="form-inline">
+                  <div class="form-group ">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="targetValue"
+                      placeholder="Enter an element to search"
+                    />
+                  </div>
+                  <button class="btn" id="search">Search</button>
+                </div>
+          
+                <br />
+
+                <div class="row">
+                  <div class="col-md-3">
+                    <button class="btn btn-info" id="random-data">
+                      Generate Random Data
+                    </button>
+                  </div>
+                  <div class="col-md-3">
+                    <label>
+                      Speed:
+                      <input
+                        type="range"
+                        id="speed"
+                        name="speed"
+                        min="100"
+                        max="800"
+                        value="300"
+                        onchange="setSpeed()"
+                      />
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="container">
+                <div class="bar-chart">
+                  <div id="chart"></div>
+                  <hr />
+                </div>
+              </div>
+        </div>
+    </section>
+
+    <!-- resources section -->
+    <section class="resource" id="resource">
+        <div class="heading">
+            <span>Searching Algorithm > </span>
+            Linear Search
+        </div>
+
+        <div class="content">
+            <p>Linear Search is defined as a sequential search algorithm that starts at one 
+                end and goes through each element of a list until the desired element 
+                is found, otherwise the search continues till the end of the data set.</p>
+
+            <h4>How Linear Search Works?</h4>
+            <ul>
+                <li>
+                    <strong>Step 1:</strong>
+                    First, read the search element (Target element) in the array.
+                </li>
+
+                <li>
+                    <strong>Step 2:</strong>
+                    Set an integer i = 0 and repeat steps 3 to 4 till i reaches the end of the array.
+                </li>
+
+                <li>
+                    <strong>Step 3:</strong>
+                    Match the key with arr[i].
+                </li>
+
+                <li>
+                    <strong>Step 4:</strong>
+                    If the key matches, return the index. Otherwise, increment i by 1.
+                </li>
+            </ul>
+
+            <h4>complexity analysis of linear search</h4>
+            <ul>
+                <li>
+                    <strong>Best case: </strong>
+                    In the best case, the key might be present at the first index. So the best case complexity is O(1).
+                </li>
+
+                <li>
+                    <strong>Average case: </strong>
+                    O(N)
+                </li>
+
+                <li>
+                    <strong>Worst case: </strong>
+                    In the worst case, the key might be present at the last index i.e., opposite to the end from which the search has started in the list. So the worst case complexity is O(N) where N is the size of the list.
+                </li>
+
+                <li>
+                    <strong>Space complexity: </strong>
+                    O(1) as except the variable to iterate through the list, no other variable is used.
+                </li>
+            </ul>
+
+            <div class="illustration">
+                <h4>Illustration of Linear Search:</h4>
+                <span>Consider an array as arr[]= [2
+                    3
+                    8
+                    9
+                    10
+                    11
+                    13
+                    15
+                    16
+                    19
+                    20
+                    21
+                    25
+                    26
+                    29] and the target key=25</span>
+
+                <img src="../../images/linear-start-1.PNG" alt="">
+
+                <ul>
+                    <li>
+                            <strong>Step 1:</strong>
+                            Set i = 0 and check target with arr[0] i.e. first element of an array.
+                    </li>
+
+                    <li>
+                        <strong>Step 2:</strong>
+                        Target and arr[0] are not the same. So make i = 1 and match key with arr[1].
+                    </li>
+
+                    <li>
+                        <strong>Step 3:</strong>
+                        arr[1] and target are different. Increment i and compare key with arr[2].
+                    </li>
+
+                    <li>
+                        <strong>Step 4:</strong>
+                        arr[2] is not the same with target. Increment i and compare key with arr[3].
+                    </li>
+
+                    <li>
+                        <strong>Step 5:</strong>
+                        Target and arr[3] are different. Make i = 4 and compare key with arr[4].
+                    </li>
+
+                    <li>
+                        <strong>Step 6:</strong>
+                        Target and arr[4] are not same. Make i = 5 and match key with arr[5].
+                    </li>
+
+                    <li>
+                        <strong>Step 7:</strong>
+                        Repeats the same steps until arr[i] matches the target.
+                    </li>
+
+                    <li>
+                        <strong>Step 8:</strong>
+                        when i=11, arr[11] matches target. Hence, given target element is present in an array arr[] at index 11.
+                    </li>
+                </ul>
+
+                <img src="../../images//linear-final.PNG" alt="">
+                <br>
+                <a href="#visual">>>Try Visualization By Yourself</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- codes section  -->
+    <section class="codes" id="codes">
+        <div class="heading">
+            <span>Implementation of Linear Search Algorithm: </span>
+        </div>
+
+        <div class="container">
+            <div class="tabs">
+              <h3 class="active">C</h3>
+              <h3>C++</h3>
+              <h3>Java</h3>
+              <h3>Python</h3>
+            </div>
+            <div class="tab-content">
+              <div class="active">
+                <h4>Linear Search in C</h4>
+                <p>
+                    <span>
+                        // C code to linearly search x in arr[]. If x 
+                         is present then return its location, otherwise 
+                        return -1 
+                    </span>
+
+                    <br>
+                    
+                    #include < stdio.h > <br/>
+                        <br/>
+                    <strong style="color:gray">int</strong> search(int arr[], int N, int x)<br/>
+                    {<br/>
+                        &nbsp;&nbsp;&nbsp;<strong style="color:gray">int</strong> i;<br/>
+                        &nbsp;&nbsp;&nbsp; <strong>for</strong> (i = 0; i < N; i++)<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>if</strong> (arr[i] == x)<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        <strong>return</strong> i;<br/>
+                        &nbsp;&nbsp;&nbsp;<strong>return</strong> -1;<br/>
+                    }<br/>
+                    <br/>
+                    <span>// Driver code</span><br/>
+                    <strong style="color:gray">int</strong> main(<strong>void</strong>)<br/>
+                    {<br/>
+                        &nbsp;&nbsp;&nbsp; <strong style="color:gray">int</strong>arr[] = { 2, 3, 4, 10, 40 };<br/>
+                        &nbsp;&nbsp;&nbsp; <strong style="color:gray">int</strong> x = 10;<br/>
+                        &nbsp;&nbsp;&nbsp;<strong style="color:gray">int</strong> N = <strong>sizeof</strong>(arr) / <strong>sizeof</strong>(arr[0]);<br/>
+                        <br/>
+                        <span>// Function call</span><br/>
+                        &nbsp;&nbsp;&nbsp;<strong style="color:gray">int</strong> result = search(arr, N, x);<br/>
+                        &nbsp;&nbsp;&nbsp;(result == -1)<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ? <strong style="color:rgb(250, 135, 154)">printf</strong>("Element is not present in array")<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    : <strong style="color:rgb(250, 138, 156)">printf</strong>("Element is present at index %d", result);<br/>
+                        &nbsp;&nbsp;&nbsp;<strong>return</strong> 0;<br/>
+                    }<br/>
+                </p>
+              </div>
+
+              <div>
+                <h4>Linear Search in CPP</h4>
+                <p>
+                    <span>
+                        // C++ code to linearly search x in arr[]. If x 
+                        is present then return its location, otherwise 
+                        return -1 
+                    </span>
+
+                    <br>
+                    
+                    #include < iostream > <br/>
+                    <strong>using namespace</strong> std;
+                        <br/>
+                    <strong style="color:gray">int</strong> search(int arr[], int N, int x)<br/>
+                    {<br/>
+                        &nbsp;&nbsp;&nbsp;<strong style="color:gray">int</strong> i;<br/>
+                        &nbsp;&nbsp;&nbsp; <strong>for</strong> (i = 0; i < N; i++)<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>if</strong> (arr[i] == x)<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        <strong>return</strong> i;<br/>
+                        &nbsp;&nbsp;&nbsp;<strong>return</strong> -1;<br/>
+                    }<br/>
+                    <br/>
+                    <span>// Driver code</span><br/>
+                    <strong style="color:gray">int</strong> main(<strong>void</strong>)<br/>
+                    {<br/>
+                        &nbsp;&nbsp;&nbsp; <strong style="color:gray">int</strong>arr[] = { 2, 3, 4, 10, 40 };<br/>
+                        &nbsp;&nbsp;&nbsp; <strong style="color:gray">int</strong> x = 10;<br/>
+                        &nbsp;&nbsp;&nbsp;<strong style="color:gray">int</strong> N = <strong>sizeof</strong>(arr) / <strong>sizeof</strong>(arr[0]);<br/>
+                        <br/>
+                        <span>// Function call</span><br/>
+                        &nbsp;&nbsp;&nbsp;<strong style="color:gray">int</strong> result = search(arr, N, x);<br/>
+                        &nbsp;&nbsp;&nbsp;(result == -1)<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ? <strong style="color:rgb(250, 135, 154)">cout<<</strong>"Element is not present in array"<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    : <strong style="color:rgb(250, 138, 156)">cout<<</strong>"Element is present at index %d"<< result;<br/>
+                        &nbsp;&nbsp;&nbsp;<strong>return</strong> 0;<br/>
+                    }<br/> 
+                </p>
+              </div>
+              <div>
+                <h4>Linear Search in Java</h4>
+                <p>
+                    <span>
+                        // Java code to linearly search x in arr[]. If x is present then return its location, otherwise return -1 
+                    </span>
+                    <br>
+                    
+                    <strong>class</strong> GFG { <br>
+                        &nbsp;&nbsp;<strong>public static int</strong> search(int arr[], int x) <br>
+                        &nbsp;&nbsp;{ <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<strong>int</strong> N = arr.length; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;for (<strong>int</strong> i = 0; i < N; i++) { <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    if (arr[i] == x) <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <strong>return</strong> i; <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;} <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<strong>return</strong> -1; <br>
+                                &nbsp;&nbsp;} <br>
+                     
+                        <br>
+                        <span>// Driver code</span><br>
+                        &nbsp;&nbsp;<strong>public static void</strong> main(String args[]) <br>
+                        &nbsp;&nbsp;{<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<strong>int </strong> arr[] = { 2, 3, 4, 10, 40 };<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<strong>int</strong> x = 10;<br>
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span>// Function call</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<strong>int</strong> result = search(arr, x);<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;if (result == -1) <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong style="color:rgb(250, 135, 154)">system.out.print</strong>( "Element is not present in array"); <br >
+                            &nbsp;&nbsp;&nbsp;&nbsp;else <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong style="color:rgb(250, 135, 154)">System.out.print</strong>("Element is present at index " + result); <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;} <br>
+                    } <br>
+                   
+                </p>
+              </div>
+              <div>
+                <h4>Linear Search in Python</h4>
+                <p>
+                    <span>
+                        // Java code to linearly search x in arr[]. If x is present then return its location, otherwise return -1 
+                    </span>
+                    <br>
+                    
+                    <strong>def</strong> search(arr, N, x): <br>
+                    &nbsp;&nbsp;&nbsp;<strong>for</strong> i in <strong style="color:rgb(250, 135, 154)">range</strong>(0, N): <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>if</strong> (arr[i] == x): <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      return i <br>
+                    &nbsp;&nbsp;&nbsp;return -1 <br>
+                    <br>
+                    <span># Driver Code</span><br>
+                    <strong>if</strong> __name__ ==<strong> "__main__":</strong> <br>
+                    &nbsp;&nbsp;&nbsp;    arr = [2, 3, 4, 10, 40] <br>
+                    &nbsp;&nbsp;&nbsp;    x = 10 <br>
+                    &nbsp;&nbsp;&nbsp;    N = len(arr) <br>
+                    
+                    &nbsp;&nbsp;&nbsp;<span># Function call</span> <br>
+                    &nbsp;&nbsp;&nbsp;    result = search(arr, N, x) <br>
+                    &nbsp;&nbsp;&nbsp;    <strong>if</strong>(result == -1): <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       <strong style="color:rgb(250, 135, 154)">print</strong>("Element is not present in array") <br>
+                    &nbsp;&nbsp;&nbsp;    <strong>else:</strong> <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        <strong style="color:rgb(250, 135, 154)">print</strong>("Element is present at index", result) <br>
+                            <br>
+                </p>
+              </div>
+            </div>
+          </div>
+    </section>
+
+    <!-- blogs section -->
+    <section class="blog" id="blog">
+        <div class="heading">
+            <span>Related Blogs On Linear Search Algorithm: </span>
+        </div>
+
+        <div class="blogs">
+            <div class="blog-item">
+                <img src="../../images/simpli-linear.PNG" alt="">
+                <div class="blog-content">
+                    <h3>
+                        <a target="_blank" href="https://www.simplilearn.com/tutorials/data-structure-tutorial/linear-search-algorithm">
+                            Linear Search Algorithm: Overview, Complexity, Implementation
+                        </a>
+                    </h3>
+                </div>
+            </div>
+
+            <div class="blog-item">
+                <img src="../../images/staragile-linear.PNG" alt="">
+                <div class="blog-content">
+                    <h3>
+                        <a target="_blank" href="https://staragile.com/blog/linear-search">
+                            Linear Search Algorithm: Overview, Procedure, Benefits and Examples
+                        </a>
+                    </h3>
+                </div>
+            </div>
+
+            <div class="blog-item">
+                <img src="../../images/upgrad-linear.PNG" alt="">
+                <div class="blog-content">
+                    <h3>
+                        <a target="_blank" href="https://www.upgrad.com/blog/introduction-to-linear-search-algorithm/">
+                            Introduction to Linear Search Algorithm: Introduction & Features
+                        </a>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/linear.js"></script>
+    <script src="../../js/script.js"></script>
+</body>
+</html>
+

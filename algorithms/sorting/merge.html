@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Sort-Algo Visualizer</title>
+
+    <!--font awesome cdn link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!--custom style file link-->
+    <link rel="stylesheet" href="../../css/linear.css">
+</head>
+<body>
+
+    <!--header-->
+    <header>
+
+        <a href="#" id="menu-btn"><i class="fas fa-bars"></i></a>
+
+        <div class="logo">
+            <span>Algo<i class="fas fa-laptop"></i>Visualizer</span>
+        </div>
+
+        <nav class="navbar">
+            <a href="#visual">Visualization</a>
+            <a href="#resource">Resource</a>
+            <a href="#codes">Codes</a>
+            <a href="#blog">Blogs</a>
+        </nav>
+
+    </header>
+
+    <!-- Visualizationsection -->
+    <section class="visual" id="visual">
+            <div class="heading">
+                <span>Merge Sort Visualizer</span>
+              </div>
+          
+              <br />
+    
+              <div class="container">
+                <div class="form-inline">
+          
+                  <div class="form-group">
+                    <button class="btn btn-primary" id="sort">Sort</button>
+                  </div>
+                  <div class="form-group">
+                    <button class=" btn btn-danger" id="stop">Stop</button>
+                  </div>
+                </div>
+                <br/>
+          
+                <div class="row">
+                  <div>
+                    <button class="btn-info" id="random-data">
+                      Generate Random Data
+                    </button>
+                  </div>
+                  <div >
+                    <label>
+                      Speed:
+                      <input
+                        type="range"
+                        id="speed"
+                        name="speed"
+                        min="100"
+                        max="800"
+                        value="300"
+                        onchange="setSpeed()"
+                      />
+                    </label>
+                  </div>
+                </div>
+              </div>
+          
+              <div class="container">
+                <div class="bar-chart">
+                  <div id="chart"></div>
+                  <hr />
+                </div>
+              </div>
+            </div>
+
+    </section>
+
+    <!-- resources section -->
+    <section class="resource" id="resource">
+      <div class="heading">
+          <span>Sorting Algorithm > </span>
+          Merge Sort
+      </div>
+
+      <div class="content">
+          <p>Merge sort is defined as a sorting algorithm that works by dividing an array into smaller subarrays, 
+            sorting each subarray, and then merging the sorted subarrays back together to form the final sorted array.</p>
+
+          <h4>complexity analysis of Merge Sort</h4>
+          <ul>
+              <li>
+                  <strong>Time Complexity: </strong>
+                  The time complexity of Merge Sort is θ(Nlog(N)) in all 3 cases (worst, average, and best) <br>
+                   as merge sort always divides the array into two halves and takes linear time to merge two halves.
+              </li>
+
+              <li>
+                  <strong>Space complexity: </strong>
+                  O(n), In merge sort all elements are copied into an auxiliary array. <br> So N auxiliary space is required for merge sort.
+              </li>
+          </ul>
+          <br>
+
+          <div class="illustration">
+              <h4>Illustration of Merge Sort:</h4>
+            <br>
+              <span>Lets consider an array arr[] = {38, 27, 43, 3, 9, 82, 10}</span>
+              <ul>
+                <li>At first, check if the left index of array is less than the right index, if yes then calculate its mid point.</li>
+                <li>Now, as we already know that merge sort first divides the whole array iteratively into equal halves, unless the atomic values are achieved. </li>
+                <li>Here, we see that an array of 7 items is divided into two arrays of size 4 and 3 respectively.</li>
+                <li>Now, again find that is left index is less than the right index for both arrays, if found yes, then again calculate mid points for both the arrays.</li>
+                <li>Now, further divide these two arrays into further halves, until the atomic units of the array is reached and further division is not possible.</li>
+                <li>After dividing the array into smallest units, start merging the elements again based on comparison of size of elements.</li>
+                <li>Firstly, compare the element for each list and then combine them into another list in a sorted manner.</li>
+                <li>After the final merging, the array will get sorted.</li>
+                <img src="../../images/merge-final.PNG" alt="" style="height: 400px; margin: 0 auto;">
+              </ul>
+
+              <br>
+              <a href="#visual">>>Try Visualization By Yourself</a>
+          </div>
+      </div>
+  </section>
+
+    <!-- codes section  -->
+    <section class="codes" id="codes">
+        <div class="heading">
+            <span>Implementation of Merge Sort Algorithm: </span>
+        </div>
+
+        <div class="container">
+            <div class="tabs">
+              <h3 class="active">C</h3>
+              <h3>C++</h3>
+              <h3>Java</h3>
+              <h3>Python</h3>
+            </div>
+            <div class="tab-content">
+              <div class="active">
+                <h4>Merge Sort in C</h4>
+                <p>
+                  <span>/* C program for Merge Sort */</span> <br>
+                      #include < stdio.h > <br>
+                      #include < stdlib.h > <br>
+                      <br>
+                      <span>// Merges two subarrays of arr[]. First subarray is arr[l..m] Second subarray is arr[m+1..r]</span> <br>
+                      void merge(int arr[], int l, int m, int r) <br>
+                      { <br>
+                      &nbsp;&nbsp;  int i, j, k; <br>
+                      &nbsp;&nbsp;  int n1 = m - l + 1; <br>
+                      &nbsp;&nbsp;  int n2 = r - m; <br>
+                        <br>
+                        &nbsp;&nbsp;  <span>/* create temp arrays */ </span><br>
+                        &nbsp;&nbsp;  int L[n1], R[n2]; <br>
+                        <br>
+                        &nbsp;&nbsp;  <span>/* Copy data to temp arrays L[] and R[] */</span> <br>
+                        &nbsp;&nbsp;  <strong>for</strong> (i = 0; i < n1; i++) <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;  L[i] = arr[l + i]; <br>
+                        &nbsp;&nbsp;  <strong>for</strong> (j = 0; j < n2; j++) <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;  R[j] = arr[m + 1 + j]; <br>
+                        <br>
+                        &nbsp;&nbsp;<span>/* Merge the temp arrays back into arr[l..r]*/</span> <br>
+                        &nbsp;&nbsp;i = 0; <span>// Initial index of first subarray</span> <br>
+                       &nbsp;&nbsp; j = 0; <span>// Initial index of second subarray</span> <br>
+                       &nbsp;&nbsp; k = l; <span>// Initial index of merged subarray</span> <br>
+                       &nbsp;&nbsp; <strong>while</strong> (i < n1 && j < n2) { <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;  <strong>if</strong> (L[i] <= R[j]) { <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    arr[k] = L[i]; <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   i++; <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp; } <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp; <strong>else</strong> { <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   arr[k] = R[j]; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   j++; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; } <br>
+                            &nbsp;&nbsp;k++; <br>
+                            &nbsp;&nbsp; } <br>
+                          <br>
+                          &nbsp;&nbsp;<span>/* Copy the remaining elements of L[], if there are any */</span> <br>
+                          &nbsp;&nbsp;<strong>while</strong> (i < n1) { <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;  arr[k] = L[i]; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;  i++; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;   k++; <br>
+                            &nbsp;&nbsp; } <br>
+                        <br>
+                        &nbsp;&nbsp;<span>/* Copy the remaining elements of R[], if there are any */</span> <br>
+                        &nbsp;&nbsp;<strong>while</strong>(j < n2) { <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;  arr[k] = R[j]; <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;  j++; <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;  k++; <br>
+                          &nbsp;&nbsp;} <br>
+                      } <br>
+
+                      <span>/* l is for left index and r is right index of the sub-array of arr to be sorted */</span> <br>
+                      void mergeSort(int arr[], int l, int r) <br>
+                      { <br>
+                        &nbsp;&nbsp;  <strong>if</strong> (l < r) { <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;   <span>// Same as (l+r)/2, but avoids overflow for large l and h</span> <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;  int m = l + (r - l) / 2; <br>
+
+                          &nbsp;&nbsp;&nbsp;&nbsp;  <span>// Sort first and second halves</span> <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;  mergeSort(arr, l, m); <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;  mergeSort(arr, m + 1, r); <br>
+                          <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;  merge(arr, l, m, r); <br>
+                          &nbsp;&nbsp;} <br>
+                      } <br>
+                      <br>
+                      <span>/* Function to print an array */</span> <br>
+                      void printArray(int A[], int size) <br>
+                      { <br>
+                        &nbsp;&nbsp;  int i; <br>
+                        &nbsp;&nbsp;  <strong>for</strong> (i = 0; i < size; i++) <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp; <strong style="color: rgb(250, 135, 154);">printf</strong>("%d ", A[i]); <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;  <strong style="color: rgb(250, 135, 154);">printf</strong>("\n"); <br>
+                      } <br>
+                      <br>
+                     <span> /* Driver code */</span> <br>
+                      int main() <br>
+                      { <br>
+                        &nbsp;&nbsp;  int arr[] = { 12, 11, 13, 5, 6, 7 }; <br>
+                        &nbsp;&nbsp;  int arr_size = sizeof(arr) / sizeof(arr[0]); <br>
+
+                        &nbsp;&nbsp;  <strong style="color: rgb(250, 135, 154);">printf</strong>("Given array is \n"); <br>
+                      &nbsp;&nbsp;  printArray(arr, arr_size); <br>
+
+                      &nbsp;&nbsp;  mergeSort(arr, 0, arr_size - 1); <br>
+
+                      &nbsp;&nbsp;  <strong style="color: rgb(250, 135, 154);">printf</strong>("\nSorted array is \n"); <br>
+                      &nbsp;&nbsp;  printArray(arr, arr_size); <br>
+                      &nbsp;&nbsp;  <strong>return</strong> 0; <br>
+                      } <br>
+                </p>
+              </div>
+
+              <div>
+                <h4>Merge Sort in CPP</h4>
+                <p>
+                  <span>// C++ program for Merge Sort</span> <br>
+                        #include < iostream > <br>
+                        <strong>using namespace</strong> std; <br>
+                        <br>
+                        <span>// Merges two subarrays of array[]. First subarray is arr[begin..mid], Second subarray is arr[mid+1..end]</span> <br>
+                        <strong>void</strong> merge(int array[], int const left, int const mid,  int const right) <br>
+                        { <br>
+                        &nbsp;&nbsp;  auto const subArrayOne = mid - left + 1; <br>
+                        &nbsp;&nbsp;  auto const subArrayTwo = right - mid; <br>
+                         <br>
+                         &nbsp;&nbsp;  <span>// Create temp arrays</span> <br>
+                         &nbsp;&nbsp;  auto *leftArray = new int[subArrayOne], <br>
+                         &nbsp;&nbsp;   *rightArray = new int[subArrayTwo]; <br>
+                          <br>
+                          &nbsp;&nbsp;  <span>// Copy data to temp arrays leftArray[] and rightArray[]</span> <br>
+                          &nbsp;&nbsp;  <strong>for </strong>(auto i = 0; i < subArrayOne; i++) <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;   leftArray[i] = array[left + i]; <br>
+                          &nbsp;&nbsp;<strong>for </strong> (auto j = 0; j < subArrayTwo; j++) <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;  rightArray[j] = array[mid + 1 + j]; <br>
+                              <br>
+                           &nbsp;&nbsp;     auto indexOfSubArrayOne = 0, <span>// Initial index of first sub-array</span> <br>
+                           &nbsp;&nbsp;  indexOfSubArrayTwo= 0; <span>// Initial index of second sub-array</span> <br>
+                           &nbsp;&nbsp;  int indexOfMergedArray = left; <span>// Initial index of merged array</span> <br>
+                            <br>
+                            &nbsp;&nbsp; <span>// Merge the temp arrays back into array[left..right]</span> <br>
+                            &nbsp;&nbsp;  <strong>while</strong> (indexOfSubArrayOne < subArrayOne && indexOfSubArrayTwo < subArrayTwo) { <br>
+                              &nbsp;&nbsp;&nbsp;&nbsp;  <strong>if </strong>(leftArray[indexOfSubArrayOne] <= rightArray[indexOfSubArrayTwo]) { <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  array[indexOfMergedArray]= leftArray[indexOfSubArrayOne]; <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  indexOfSubArrayOne++; <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp; } <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp; <strong>else</strong> { <br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[indexOfMergedArray] = rightArray[indexOfSubArrayTwo]; <br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;indexOfSubArrayTwo++; <br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp; } <br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp; indexOfMergedArray++; <br>
+                                  &nbsp;&nbsp;} <br>
+
+                          &nbsp;&nbsp;<span>// Copy the remaining elements of left[], if there are any</span> <br>
+                          &nbsp;&nbsp;<strong>while</strong> (indexOfSubArrayOne < subArrayOne) { <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;  array[indexOfMergedArray] = leftArray[indexOfSubArrayOne]; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;  indexOfSubArrayOne++; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;  indexOfMergedArray++; <br>
+                            &nbsp;&nbsp;} <br>
+                            &nbsp;&nbsp; <span>// Copy the remaining elements of right[], if there are any</span> <br>
+                            &nbsp;&nbsp; <strong>while</strong> (indexOfSubArrayTwo < subArrayTwo) { <br>
+                              &nbsp;&nbsp;&nbsp;&nbsp;  array[indexOfMergedArray] = rightArray[indexOfSubArrayTwo]; <br>
+                              &nbsp;&nbsp;&nbsp;&nbsp;  indexOfSubArrayTwo++; <br>
+                              &nbsp;&nbsp;&nbsp;&nbsp;  indexOfMergedArray++; <br>
+                              &nbsp;&nbsp; } <br>
+                          &nbsp;&nbsp;<strong>delete[]</strong> leftArray; <br>
+                          &nbsp;&nbsp;<strong>delete[]</strong> rightArray; <br>
+                        } <br>
+ <br>
+                        <span>// begin is for left index and end is right index of the sub-array of arr to be sorted </span> <br>
+                        void mergeSort(int array[], int const begin, int const end) <br>
+                        { <br>
+                          &nbsp;&nbsp;  <strong>if</strong> (begin >= end) <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;   <strong>return</strong>; // Returns recursively <br>
+ <br>
+                        &nbsp;&nbsp;  auto mid = begin + (end - begin) / 2; <br>
+                        &nbsp;&nbsp;  mergeSort(array, begin, mid); <br>
+                        &nbsp;&nbsp;  mergeSort(array, mid + 1, end); <br>
+                        &nbsp;&nbsp;  merge(array, begin, mid, end); <br>
+                        } <br>
+ <br>
+                        <span>// Function to print an array</span> <br>
+                        void printArray(int A[], int size) <br>
+                        { <br>
+                          &nbsp;&nbsp;  <strong>for</strong> (auto i = 0; i < size; i++) <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;    <strong style="color: rgb(250, 135, 154);">cout <<</strong> A[i] << " "; <br>
+                        } <br>
+ <br>
+                        <span> // Driver code</span> <br>
+                        int main() <br>
+                        { <br>
+                        &nbsp;&nbsp;  int arr[] = { 12, 11, 13, 5, 6, 7 }; <br>
+                        &nbsp;&nbsp;  auto arr_size = sizeof(arr) / sizeof(arr[0]); <br>
+
+                        &nbsp;&nbsp; <strong style="color: rgb(250, 135, 154);">cout << </strong>"Given array is \n"; <br>
+                        &nbsp;&nbsp;  printArray(arr, arr_size); <br>
+
+                        &nbsp;&nbsp;  mergeSort(arr, 0, arr_size - 1); <br>
+
+                        &nbsp;&nbsp;  <strong style="color: rgb(250, 135, 154);">cout <<</strong> "\nSorted array is \n"; <br>
+                        &nbsp;&nbsp;  printArray(arr, arr_size); <br>
+                        &nbsp;&nbsp;  <strong>return</strong> 0; <br>
+                        } <br>
+                </p>
+              </div>
+              <div>
+                <h4>Merge sort in Java</h4>
+                <p>
+                  <span>/* Java program for Merge Sort */</span> <br>
+                    <strong>class</strong> MergeSort { <br>
+                     &nbsp;&nbsp; <span>// Merges two subarrays of arr[]. First subarray is arr[l..m], Second subarray is arr[m+1..r]</span> <br>
+                     &nbsp;&nbsp; <strong>void</strong> merge(int arr[], int l, int m, int r) <br>
+                     &nbsp;&nbsp; { <br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;   <span>// Find sizes of two subarrays to be merged</span> <br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;   int n1 = m - l + 1; <br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;  int n2 = r - m; <br>
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;  <span> /* Create temp arrays */</span> <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;  int L[] = new int[n1]; <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp; int R[] = new int[n2]; <br>
+                         <br>
+                         &nbsp;&nbsp;&nbsp;&nbsp; <span> /*Copy data to temp arrays*/</span> <br>
+                         &nbsp;&nbsp;&nbsp;&nbsp; <strong>for </strong>(int i = 0; i < n1; ++i) <br>
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   L[i] = arr[l + i]; <br>
+                         &nbsp;&nbsp;&nbsp;&nbsp;<strong>for </strong> (int j = 0; j < n2; ++j) <br>
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  R[j] = arr[m + 1 + j]; <br>
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span>/* Merge the temp arrays */</span> <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;  <span>// Initial indexes of first and second subarrays</span> <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;  int i = 0, j = 0; <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;  <span>// Initial index of merged subarray array</span> <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;  int k = l; <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp; <strong>while </strong>(i < n1 && j < n2) { <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <strong>if</strong> (L[i] <= R[j]) { <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    arr[k] = L[i]; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    i++; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  } <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>else</strong> { <br>
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  arr[k] = R[j]; <br>
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  j++; <br>
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br>
+                              &nbsp;&nbsp;&nbsp;&nbsp; k++; <br>
+                              &nbsp;&nbsp;&nbsp;&nbsp;} <br>
+
+                              &nbsp;&nbsp;&nbsp;&nbsp;<span>/* Copy remaining elements of L[] if any */</span> <br>
+                              &nbsp;&nbsp;&nbsp;&nbsp;<strong>while</strong> (i < n1) { <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  arr[k] = L[i]; <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  i++; <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  k++; <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;} <br>
+                         <br>
+                         &nbsp;&nbsp;&nbsp;&nbsp; <span>/* Copy remaining elements of R[] if any */</span> <br>
+                         &nbsp;&nbsp;&nbsp;&nbsp; <strong>while</strong> (j < n2) { <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  arr[k] = R[j]; <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  j++; <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  k++; <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp; } <br>
+                        &nbsp;&nbsp;} <br>
+                       <br>
+                       &nbsp;&nbsp;<span> // Main function that sorts arr[l..r] using merge()</span> <br>
+                       &nbsp;&nbsp;<strong>void</strong> sort(int arr[], int l, int r) <br>
+                       &nbsp;&nbsp; { <br>
+                        &nbsp;&nbsp;<strong>if</strong> (l < r) { <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;  <span>// Find the middle point</span> <br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;  int m = l + (r - l) / 2; <br>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;  <span>// Sort first and second halves</span> <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;  sort(arr, l, m); <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;  sort(arr, m + 1, r); <br>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;  <span>// Merge the sorted halves</span> <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;  merge(arr, l, m, r); <br>
+                        &nbsp;&nbsp;} <br>
+                        } <br>
+                       <br>
+                       &nbsp;&nbsp;<span>/* A utility function to print array of size n */</span> <br>
+                       &nbsp;&nbsp;<strong>static void </strong> printArray(int arr[]) <br>
+                       &nbsp;&nbsp;{ <br>
+                       &nbsp;&nbsp; &nbsp;&nbsp;  int n = arr.length; <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;  <strong>for</strong> (int i = 0; i < n; ++i) <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <strong style="color: rgb(250, 135, 154);">System.out.print</strong>(arr[i] + " "); <br>
+                       &nbsp;&nbsp; &nbsp;&nbsp;  <strong style="color: rgb(250, 135, 154);">System.out.println();</strong> <br>
+                       &nbsp;&nbsp; } <br>
+                       <br>
+                       &nbsp;&nbsp;<span>// Driver code</span> <br>
+                       &nbsp;&nbsp;<strong>public static void</strong> main(String args[]) <br>
+                       &nbsp;&nbsp;{ <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp; int arr[] = { 12, 11, 13, 5, 6, 7 }; <br>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp; <strong style="color: rgb(250, 135, 154);">System.out.println("Given Array");</strong> <br>
+                       &nbsp;&nbsp;&nbsp;&nbsp; printArray(arr); <br>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;MergeSort ob = new MergeSort(); <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;ob.sort(arr, 0, arr.length - 1); <br>
+
+                       &nbsp;&nbsp;&nbsp;&nbsp; <strong style="color: rgb(250, 135, 154);">System.out.println</strong>("\nSorted array"); <br>
+                       &nbsp;&nbsp;&nbsp;&nbsp; printArray(arr); <br>
+                       &nbsp;&nbsp;} <br>
+                    } <br>
+                </p>
+              </div>
+              <div>
+                <h4>Merge Sort in Python</h4>
+                <p>
+                  <span># Python program for implementation of MergeSort</span> <br>
+                      <strong>def</strong> mergeSort(arr): <br>
+                      &nbsp;&nbsp;  <strong>if</strong> len(arr) > 1: <br>
+                        <br>
+                        &nbsp;&nbsp;    <span># Finding the mid of the array</span> <br>
+                        &nbsp;&nbsp;    mid = len(arr)//2 <br>
+
+                        &nbsp;&nbsp;  <span># Dividing the array elements </span><br>
+                        &nbsp;&nbsp;  L = arr[:mid] <br>
+
+                        &nbsp;&nbsp;  <span># into 2 halves</span> <br>
+                        &nbsp;&nbsp;  R = arr[mid:] <br>
+
+                        &nbsp;&nbsp; <span> # Sorting the first half</span> <br>
+                        &nbsp;&nbsp;  mergeSort(L) <br>
+
+                        &nbsp;&nbsp;  <span># Sorting the second half</span> <br>
+                        &nbsp;&nbsp;  mergeSort(R) <br>
+
+                        &nbsp;&nbsp;  i = j = k = 0 <br>
+
+                        &nbsp;&nbsp;  <span># Copy data to temp arrays L[] and R[]</span> <br>
+                        &nbsp;&nbsp;  <strong>while</strong> i < len(L) and j < len(R): <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;    <strong>if</strong> L[i] <= R[j]: <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      arr[k] = L[i] <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       i += 1 <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;    <strong>else:</strong> <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      arr[k] = R[j] <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      j += 1 <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;    k += 1 <br>
+                            <br>
+                            &nbsp;&nbsp;  <span># Checking if any element was left</span> <br>
+                            &nbsp;&nbsp;  <strong>while</strong> i < len(L): <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;    arr[k] = L[i] <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;    i += 1 <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;   k += 1 <br>
+                            <br>
+                            &nbsp;&nbsp; <strong>while</strong> j < len(R): <br>
+                           &nbsp;&nbsp;&nbsp;&nbsp; arr[k] = R[j] <br>
+                           &nbsp;&nbsp;&nbsp;&nbsp; j += 1 <br>
+                           &nbsp;&nbsp;&nbsp;&nbsp; k += 1 <br>
+                             <br>
+                             &nbsp;&nbsp; <span># Code to print the list</span> <br>
+
+                     <br>
+                      <strong>def</strong> printList(arr): <br>
+                      &nbsp;&nbsp;  <strong>for</strong> i in range(len(arr)): <br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;    <strong style="color: rgb(250, 135, 154);">print</strong>(arr[i], end=" ") <br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;  <strong style="color: rgb(250, 135, 154);">print</strong> <br>
+
+
+                      <span># Driver Code</span> <br>
+                      <strong>if</strong> __name__ == <strong>'__main__'</strong>: <br>
+                     &nbsp;&nbsp;   arr = [12, 11, 13, 5, 6, 7] <br>
+                     &nbsp;&nbsp;   <strong style="color: rgb(250, 135, 154);">print</strong>("Given array is", end="\n") <br>
+                     &nbsp;&nbsp;   printList(arr) <br>
+                     &nbsp;&nbsp;   mergeSort(arr) <br>
+                     &nbsp;&nbsp;   <strong style="color: rgb(250, 135, 154);">print</strong>("Sorted array is: ", end="\n") <br>
+                     &nbsp;&nbsp;   printList(arr) <br>
+                </p>
+              </div>
+            </div>
+          </div>
+    </section>
+
+    <!-- blogs section -->
+    <section class="blog" id="blog">
+        <div class="heading">
+            <span>Related Blogs On Merge Sort Algorithm: </span>
+        </div>
+
+        <div class="blogs">
+            <div class="blog-item">
+                <img src="../../images/merge-crio.PNG" alt="">
+                <div class="blog-content">
+                    <h3>
+                        <a target="_blank" href="https://www.crio.do/blog/merge-sort-algorithm/">
+                            Everything you need to know about merge sort
+                        </a>
+                    </h3>
+                </div>
+            </div>
+
+            <div class="blog-item">
+                <img src="../../images/merge-greatlearning.PNG" alt="">
+                <div class="blog-content">
+                    <h3>
+                        <a target="_blank" href="https://www.mygreatlearning.com/blog/merge-sort/">
+                            Merge Sort Using C, C++, Java, and Python 
+                        </a>
+                    </h3>
+                </div>
+            </div>
+
+            <div class="blog-item">
+                <img src="../../images/merge-hackerearth.PNG" alt="">
+                <div class="blog-content">
+                    <h3>
+                        <a target="_blank" href="https://www.hackerearth.com/practice/algorithms/sorting/merge-sort/tutorial/">
+                            Merge sort tutorial and notes with practice problems
+                        </a>
+                    </h3>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/sort-base.js"></script>
+    <script src="../../js/merge-sort.js"></script>
+</body>
+</html>
+

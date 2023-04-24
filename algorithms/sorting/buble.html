@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Sort-Algo Visualizer</title>
+
+    <!--font awesome cdn link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!--custom style file link-->
+    <link rel="stylesheet" href="../../css/linear.css">
+</head>
+<body>
+
+    <!--header-->
+    <header>
+
+        <a href="#" id="menu-btn"><i class="fas fa-bars"></i></a>
+
+        <div class="logo">
+            <span>Algo<i class="fas fa-laptop"></i>Visualizer</span>
+        </div>
+
+        <nav class="navbar">
+            <a href="#visual">Visualization</a>
+            <a href="#resource">Resource</a>
+            <a href="#codes">Codes</a>
+            <a href="#blog">Blogs</a>
+        </nav>
+
+    </header>
+
+    <!-- Visualizationsection -->
+    <section class="visual" id="visual">
+            <div class="heading">
+                <span>Bubble Sort Visualizer</span>
+              </div>
+          
+              <br />
+    
+              <div class="container">
+                <div class="form-inline">
+          
+                  <div class="form-group">
+                    <button class="btn btn-primary" id="sort">Sort</button>
+                  </div>
+                  <div class="form-group">
+                    <button class=" btn btn-danger" id="stop">Stop</button>
+                  </div>
+                </div>
+                <br/>
+          
+                <div class="row">
+                  <div>
+                    <button class="btn-info" id="random-data">
+                      Generate Random Data
+                    </button>
+                  </div>
+                  <div >
+                    <label>
+                      Speed:
+                      <input
+                        type="range"
+                        id="speed"
+                        name="speed"
+                        min="100"
+                        max="800"
+                        value="300"
+                        onchange="setSpeed()"
+                      />
+                    </label>
+                  </div>
+                </div>
+              </div>
+          
+              <div class="container">
+                <div class="bar-chart">
+                  <div id="chart"></div>
+                  <hr />
+                </div>
+              </div>
+            </div>
+
+    </section>
+
+    <!-- resources section -->
+    <section class="resource" id="resource">
+      <div class="heading">
+          <span>Sorting Algorithm > </span>
+          Bubble Sort
+      </div>
+
+      <div class="content">
+          <p>Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in the wrong order. This algorithm is not suitable for large data sets as its average and worst-case time complexity is quite high.</p>
+
+          <h4>complexity analysis of Bubble sort</h4>
+          <ul>
+              <li>
+                  <strong>Best case: </strong>
+                  O(N). The best case occurs when an array is already sorted.
+              </li>
+
+              <li>
+                  <strong> Worst case & Average case: </strong>
+                  O(N^2). The worst case occurs when an array is reverse sorted.
+              </li>
+
+              <li>
+                  <strong>Space complexity: </strong>
+                  O(1) 
+              </li>
+          </ul>
+
+          <div class="illustration">
+              <h4>Illustration of Bubble sort:</h4>
+              <br>
+              <span>Consider an array arr[] = {6, 3, 0, 5} is to be sorted using bubble sort.</span>
+
+              <ul>
+                <li>
+                  <strong style="font-size: 17px;">First Pass: </strong>
+                  <ul>
+                    <li>Bubble sort starts with very first two elements, comparing them to check which one is greater. </li>
+                    <li>(<strong> 6 3</strong> 0 5 ) –> ( <strong>3 6</strong> 0 5 ), Here, algorithm compares the first two elements, and swaps since 6 > 3.  </li>
+                    <li>( 3 <strong>6 0</strong> 5 ) –>  ( 3 <strong>0 6</strong> 5 ), Swap since 6 > 0  </li>
+                    <li>( 3 0 <strong>6 5</strong> ) –>  ( 3 0 <strong>5 6</strong> ), Swap since 6 > 5 </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <strong style="font-size: 17px;">Second Pass :</strong>
+                  <ul>
+                    <li>Now, during second iteration it should look like this </li>
+                    <li>( <strong>3 0</strong> 5 6 ) –>  ( <strong>0 3</strong> 5 6 ), Swap since 3 > 0  </li>
+                    <li>( 0 3 5 6 ) –>  ( 0 3 5 6 ), No change as 5 > 3 </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <strong style="font-size: 17px;">Third Pass:</strong>
+                  <ul>
+                    <li>Now, the array is already sorted, but our algorithm does not know if it is completed.</li>
+                    <li>The algorithm needs one whole pass without any swap to know it is sorted. </li>
+                    <li>( 0 3 5 6 ) –>  ( 0 3 5 6 ), No change as 3 > 0  </li>
+                  </ul>
+                </li>
+                  
+                <li>Array is now sorted and no more pass will happen.</li>
+              </ul>
+
+              <br>
+              <a href="#visual">>>Try Visualization By Yourself</a>
+          </div>
+      </div>
+  </section>
+
+    <!-- codes section  -->
+    <section class="codes" id="codes">
+        <div class="heading">
+            <span>Implementation of Bubble Sort Algorithm: </span>
+        </div>
+
+        <div class="container">
+            <div class="tabs">
+              <h3 class="active">C</h3>
+              <h3>C++</h3>
+              <h3>Java</h3>
+              <h3>Python</h3>
+            </div>
+            <div class="tab-content">
+              <div class="active">
+                <h4>Bubble Sort in C</h4>
+                <p>
+                    <span>// C program for implementation of Bubble sort</span> <br>
+                        #include < stdio.h > <br>
+                         <br>
+                        <strong>void</strong> swap(<strong style="color:gray">int</strong>* xp, <strong style="color:gray">int</strong>* yp) <br>
+                        { <br>
+                        &nbsp;&nbsp;    <strong style="color:gray">int</strong> temp = *xp; <br>
+                        &nbsp;&nbsp;      *xp = *yp; <br>
+                        &nbsp;&nbsp;      *yp = temp; <br>
+                        } <br>
+                         <br>
+                        <span>// A function to implement bubble sort</span> <br>
+                        <strong>void</strong> bubbleSort(<strong style="color:gray">int</strong> arr[], <strong style="color:gray">int</strong> n) <br>
+                        { <br>
+                            &nbsp;&nbsp;      <strong style="color:gray">int</strong> i, j; <br>
+                            &nbsp;&nbsp;      <strong>for</strong> (i = 0; i < n - 1; i++) <br>
+                        
+                            &nbsp;&nbsp;      // Last i elements are already in place <br>
+                            &nbsp;&nbsp;  &nbsp;&nbsp;      <strong>for</strong> (j = 0; j < n - i - 1; j++) <br>
+                            &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;          <strong>if</strong> (arr[j] > arr[j + 1]) <br>
+                            &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;              swap(&arr[j], &arr[j + 1]); <br>
+                        } <br>
+                         <br>
+                        <span>/* Function to print an array */</span> <br>
+                        <strong>void</strong> printArray(int arr[], int size) <br>
+                        { <br>
+                            &nbsp;&nbsp;      <strong style="color:gray">int</strong> i; <br>
+                            &nbsp;&nbsp;      <strong>for</strong> (i = 0; i < size; i++) <br>
+                            &nbsp;&nbsp;  &nbsp;&nbsp;      <strong style="color:rgb(250, 135, 154)">printf</strong>("%d ", arr[i]); <br>
+                            &nbsp;&nbsp;  &nbsp;&nbsp;         <strong style="color:rgb(250, 135, 154)">printf</strong>("\n"); <br>
+                        } <br>
+                         <br>
+                        <span>// Driver program to test above functions</span> <br>
+                        <strong style="color:gray">int</strong> main() <br>
+                        { <br>
+                            &nbsp;&nbsp;      <strong style="color:gray">int</strong> arr[] = { 5, 1, 4, 2, 8 }; <br>
+                            &nbsp;&nbsp;     <strong style="color:gray">int</strong> n = sizeof(arr) / sizeof(arr[0]); <br>
+                            &nbsp;&nbsp;      bubbleSort(arr, n); <br>
+                            &nbsp;&nbsp;      <strong style="color:rgb(250, 135, 154)">printf</strong>("Sorted array: \n"); <br>
+                            &nbsp;&nbsp;      printArray(arr, n); <br>
+                            &nbsp;&nbsp;      <strong>return</strong> 0; <br>
+                        } <br>
+                </p>
+              </div>
+
+              <div>
+                <h4>Bubble Sort in CPP</h4>
+                <p>
+                    <span>// C++ program for implementation of Bubble sort</span> <br>
+                        #include < iostream > <br>
+                        <strong>using namespace </strong>std;
+                         <br>
+                        <strong>void</strong> swap(<strong style="color:gray">int</strong>* xp, <strong style="color:gray">int</strong>* yp) <br>
+                        { <br>
+                        &nbsp;&nbsp;    <strong style="color:gray">int</strong> temp = *xp; <br>
+                        &nbsp;&nbsp;      *xp = *yp; <br>
+                        &nbsp;&nbsp;      *yp = temp; <br>
+                        } <br>
+                         <br>
+                        <span>// A function to implement bubble sort</span> <br>
+                        <strong>void</strong> bubbleSort(<strong style="color:gray">int</strong> arr[], <strong style="color:gray">int</strong> n) <br>
+                        { <br>
+                            &nbsp;&nbsp;      <strong style="color:gray">int</strong> i, j; <br>
+                            &nbsp;&nbsp;      <strong>for</strong> (i = 0; i < n - 1; i++) <br>
+                        
+                            &nbsp;&nbsp;      // Last i elements are already in place <br>
+                            &nbsp;&nbsp;  &nbsp;&nbsp;      <strong>for</strong> (j = 0; j < n - i - 1; j++) <br>
+                            &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;          <strong>if</strong> (arr[j] > arr[j + 1]) <br>
+                            &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;              swap(&arr[j], &arr[j + 1]); <br>
+                        } <br>
+                         <br>
+                        <span>/* Function to print an array */</span> <br>
+                        <strong>void</strong> printArray(int arr[], int size) <br>
+                        { <br>
+                            &nbsp;&nbsp;      <strong style="color:gray">int</strong> i; <br>
+                            &nbsp;&nbsp;      <strong>for</strong> (i = 0; i < size; i++) <br>
+                            &nbsp;&nbsp;  &nbsp;&nbsp;      <strong style="color:rgb(250, 135, 154)">cout<<</strong>"%d "<< arr[i]; <br>
+                            &nbsp;&nbsp;  &nbsp;&nbsp;         <strong style="color:rgb(250, 135, 154)">cout<<</strong>endl; <br>
+                        } <br>
+                         <br>
+                        <span>// Driver program to test above functions</span> <br>
+                        <strong style="color:gray">int</strong> main() <br>
+                        { <br>
+                            &nbsp;&nbsp;      <strong style="color:gray">int</strong> arr[] = { 5, 1, 4, 2, 8 }; <br>
+                            &nbsp;&nbsp;     <strong style="color:gray">int</strong> n = sizeof(arr) / sizeof(arr[0]); <br>
+                            &nbsp;&nbsp;      bubbleSort(arr, n); <br>
+                            &nbsp;&nbsp;      <strong style="color:rgb(250, 135, 154)">cout<</strong>"Sorted array:"<< endl; <br>
+                            &nbsp;&nbsp;      printArray(arr, n); <br>
+                            &nbsp;&nbsp;      <strong>return</strong> 0; <br>
+                        } <br>
+                </p>
+              </div>
+              <div>
+                <h4>Bubble sort in Java</h4>
+                <p>
+                    <span>// Java program for implementation of Bubble Sort</span><br>
+                        <strong>import</strong> java.util.*;<br>
+<br>
+                        <strong>class</strong> BubbleSort {<br>
+                        &nbsp;&nbsp;    <strong>void</strong> bubbleSort(int arr[])<br>
+                        &nbsp;&nbsp;    {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;        int n = arr.length;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;    <strong>for </strong>(int i = 0; i < n - 1; i++)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        <strong>for </strong> (int j = 0; j < n - i - 1; j++)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            <strong>if</strong> (arr[j] > arr[j + 1]) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                // swap arr[j+1] and arr[j]<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            int temp = arr[j];<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;           arr[j] = arr[j + 1];<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            arr[j + 1] = temp;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        }<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                            <br>
+                            &nbsp;&nbsp;                <span>/* Prints the array */</span><br>
+                            &nbsp;&nbsp; <strong>void</strong> printArray(int arr[])<br>
+                            &nbsp;&nbsp;     {<br>
+                                &nbsp;&nbsp; &nbsp;&nbsp;   int n = arr.length;<br>
+                                &nbsp;&nbsp; &nbsp;&nbsp;     <strong>for </strong> (int i = 0; i < n; ++i)<br>
+                                &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;     <strong style="color:rgb(250, 135, 154)">System.out.print</strong>(arr[i] + " ");<br>
+                                &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;    <strong style="color:rgb(250, 135, 154)">System.out.println();</strong><br>
+                                &nbsp;&nbsp; &nbsp;&nbsp;  }<br>
+                            <br>
+                            &nbsp;&nbsp; <span>// Driver method to test above</span><br>
+                            &nbsp;&nbsp; <strong>public static void</strong> main(String args[])<br>
+                            &nbsp;&nbsp; {<br>
+                                &nbsp;&nbsp; &nbsp;&nbsp;     BubbleSort ob = new BubbleSort();<br>
+                                &nbsp;&nbsp; &nbsp;&nbsp;     int arr[] = { 5, 1, 4, 2, 8 };<br>
+                                &nbsp;&nbsp; &nbsp;&nbsp;     ob.bubbleSort(arr);<br>
+                                &nbsp;&nbsp; &nbsp;&nbsp;     <strong style="color:rgb(250, 135, 154)">System.out.println</strong>("Sorted array");<br>
+                                &nbsp;&nbsp; &nbsp;&nbsp;     ob.printArray(arr);<br>
+                                &nbsp;&nbsp; }<br>
+                        }<br>
+                </p>
+              </div>
+              <div>
+                <h4>Bubble Sort in Python</h4>
+                <p>
+                    <span># Python program for implementation of Bubble Sort</span> <br>
+                    <br>
+                    <strong>def</strong> bubbleSort(arr): <br>
+                    &nbsp;&nbsp;    n = len(arr) <br>
+                    <br>
+                        <span># Traverse through all array elements </span><br>
+                        <strong>for</strong> i in range(n): <br>
+
+                        &nbsp;&nbsp;        <span># Last i elements are already in place</span> <br>
+                        &nbsp;&nbsp;    <strong>for</strong> j in range(0, n-i-1): <br>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;        <span># traverse the array from 0 to n-i-1 Swap if the element found is greater than the next element</span> <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;        <strong>if</strong> arr[j] > arr[j+1]: <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            arr[j], arr[j+1] = arr[j+1], arr[j] <br>
+                     <br>
+
+                    <span># Driver code to test above</span> <br>
+                    <strong>if</strong> __name__ == <strong>"__main__"</strong>: <br>
+                    &nbsp;&nbsp;arr = [5, 1, 4, 2, 8] <br>
+
+                    &nbsp;&nbsp;bubbleSort(arr) <br>
+
+                    &nbsp;&nbsp;<strong style="color:rgb(250, 135, 154)">print</strong>("Sorted array is:") <br>
+                    &nbsp;&nbsp;<strong>for</strong> i in range(len(arr)): <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<strong style="color:rgb(250, 135, 154)">print</strong>("%d" % arr[i], end=" ") <br>
+
+                </p>
+              </div>
+            </div>
+          </div>
+    </section>
+
+    <!-- blogs section -->
+    <section class="blog" id="blog">
+        <div class="heading">
+            <span>Related Blogs On Bubble Sort Algorithm: </span>
+        </div>
+
+        <div class="blogs">
+            <div class="blog-item">
+                <img src="../../images/bubble-board.PNG" alt="">
+                <div class="blog-content">
+                    <h3>
+                        <a target="_blank" href="https://www.boardinfinity.com/blog/a-quick-guide-to-bubble-sort-algorithm/">
+                            A Quick Guide to Bubble Sort Algorithm
+                        </a>
+                    </h3>
+                </div>
+            </div>
+
+            <div class="blog-item">
+                <img src="../../images/bubble-goseeko.PNG" alt="">
+                <div class="blog-content">
+                    <h3>
+                        <a target="_blank" href="https://www.goseeko.com/blog/what-is-bubble-sort/">
+                            What is Bubble sort Algorithm?
+                        </a>
+                    </h3>
+                </div>
+            </div>
+
+            <div class="blog-item">
+                <img src="../../images/bubble-coding.PNG" alt="">
+                <div class="blog-content">
+                    <h3>
+                        <a target="_blank" href="https://www.codingninjas.com/codestudio/library/bubble-sort-algorithm">
+                            Bubble Sort Algorithm: Introduction, Complexity, Working and Code
+                        </a>
+                    </h3>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="../../js/sort-base.js"></script>
+    <script src="../../js/bubble-sort.js"></script>
+    <script src="../../js/script.js"></script>
+</body>
+</html>
+

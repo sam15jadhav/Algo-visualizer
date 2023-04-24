@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+
+:root{
+    --main-color:#443;
+    --border-radius:95% 4% 97% 5%/4% 94% 3% 95%;
+    --border-radius-hover:4% 95% 6% 95%/95% 4% 92% 5%;
+    --border:.2rem solid rgb(42, 126, 165);
+    --border-hover:.2rem dashed rgb(42,126,165);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    transition: all .2s linear;
+    text-transform: capitalize;
+}
+
+html{
+    font-size:62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 6rem;
+    scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar{
+    width: 1rem;
+    height: .5rem;
+}
+
+html::-webkit-scrollbar-thumb{
+    background: #666;
+}
+
+html::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+.btn{
+    display: inline-block;
+    padding: .9rem 1.5rem;
+    border-radius: var(--border-radius);
+    color: var(--main-color);
+    border: var(--border);
+    cursor: pointer;
+    margin-top: 1rem;
+    font-size: 1.7rem;
+}
+
+.lg-btn{
+    background: rgb(42, 126, 165);
+    color: white;
+}
+
+.btn:hover{
+    border: var(--border-hover);
+    border-radius: var(--border-radius-hover);
+}
+
+#menu-btn{
+    font-size: 3rem;
+    color: var(--main-color);
+    cursor: pointer;
+    display: none;
+}
+
+header{
+    display: flex;
+    height: 7vh;
+    align-items: center;
+    justify-content: space-between;
+    padding:.2rem 9%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: #ffff;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+}
+
+header .logo{
+    font-size: 3rem;
+    font-weight: bolder;
+    color:var(--main-color);
+}
+
+header .logo i{
+    font-size: 2.5rem;
+    color: rgb(42, 126, 165);
+    padding: .5rem;
+}
+
+header .navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 5%;
+}
+
+header .navbar a{
+        font-size: 1.8rem;
+        color: var(--main-color);
+        margin: 0 1rem;
+        text-decoration: none;
+        text-transform: capitalize;
+}
+
+header .btn{
+    margin-top: 0;
+}
+
+section{
+    padding: 2rem 9%;
+}
+
+.heading{
+    position: relative;
+    margin: 0 auto;
+}
+
+.heading span{
+    font-size: 4.5rem;
+    text-transform: uppercase;
+    color: rgb(42, 126, 165);
+    -webkit-text-stroke: .05rem var(--main-color);
+    letter-spacing: .2rem;
+    text-align: center;
+    pointer-events: none;
+    font-weight: bolder;
+}
+
+.problems{
+    margin-top: 7rem;
+}
+
+.problems .container{
+        background-color: #ffffff;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        border-bottom: 1px solid silver;
+        border-right: 1px solid silver;
+}
+
+.problems .container .header{
+    padding: 2rem 4rem;
+    background: rgba(0,0,0,.05);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.level{
+    width: 11%;
+    padding: .7rem;
+    /* float: right; */
+}
+
+.level option{
+    font-size: 18px;
+}
+
+.main-content{
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.question{
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid silver;
+}
+
+.left p{
+    font-size: 12px;
+    margin-bottom: .7rem;
+}
+
+.left h3{
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.left .easy{
+    font-size: 10px;
+    color: green;
+    background: rgba(0,128,0,0.4);
+    padding: .2rem 1rem;
+    border-radius: 25%;
+    font-weight: bold;
+}
+
+.left .hard{
+    font-size: 10px;
+    font-weight: bold;
+    color: red;
+    background: rgba(212,0,0,0.4);
+    padding: .2rem 1rem;
+    border-radius: 25%;
+}
+
+.left .medium{
+    font-size: 10px;
+    font-weight: bold;
+    color: orangered;
+    background: rgba(255,165,0,.5);
+    padding: .2rem 1rem;
+    border-radius: 25%;
+}
+
+
+.right .btn a{
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.btn{
+    display: inline-block;
+    padding: .4rem .9rem;
+    border-radius: 95% 4% 97% 5%/4% 94% 3% 95%;
+    color: white;
+    border: .2rem solid rgb(42, 126, 165);
+    cursor: pointer;
+    background: rgb(42, 126, 165);
+    margin-top: 1rem;
+    font-size: 1.7rem;
+}
